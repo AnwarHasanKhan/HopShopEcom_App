@@ -1,0 +1,20 @@
+import { ADD_TO_CART, CLEAR_CART, REMOVE_FROM_CART } from '../ActionTypes';
+
+const initialState = [];
+
+export default (state = initialState, { type, payload }) => {
+  switch (type) {
+    case ADD_TO_CART:
+      return [...state, payload];
+    case REMOVE_FROM_CART:
+      const deleteArray1 = state.filter((item, index) => {
+        return index !== payload;
+      });
+      return deleteArray1;
+    case CLEAR_CART:
+      return [];
+
+    default:
+      return state;
+  }
+};
