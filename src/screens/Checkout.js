@@ -21,7 +21,6 @@ import {
   removeFromCart,
 } from '../redux/actions/Actions';
 import CommonButton from '../common/CommonButton';
-import CartEmpty from '../common/CartEmpty';
 
 const Checkout = () => {
   const navigation = useNavigation();
@@ -72,14 +71,14 @@ const Checkout = () => {
           status: 'success',
         });
         dispatch(clearCart());
-        setSelectedAddress('')
+        setSelectedAddress('');
       })
       .catch(error => {
         navigation.navigate('OrderSuccess', {
           status: 'failed',
         });
         dispatch(clearCart());
-        setSelectedAddress('')
+        setSelectedAddress('');
       });
   };
   return (
