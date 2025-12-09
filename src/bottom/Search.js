@@ -4,7 +4,7 @@ import Header from '../common/Header';
 import CustomTextInput from '../common/CustomTextInput';
 import CommonButton from '../common/CommonButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { products } from '../Products';
+import { products } from '../models/Products';
 
 const Search = () => {
   const [query, setQuery] = useState('');

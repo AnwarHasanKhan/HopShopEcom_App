@@ -11,7 +11,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Header from '../common/Header';
-import { products } from '../Products';
+import { products } from '../models/Products';
 import MyProductItem from '../common/MyProductItem';
 import { useDispatch } from 'react-redux';
 import { addItemToCart, addToWishlist } from '../redux/actions/Actions';

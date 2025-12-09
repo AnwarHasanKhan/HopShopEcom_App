@@ -9,7 +9,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import api from '../api/Api';
+import api from '../services/Api';
 import Header from '../common/Header';
 import { useDispatch } from 'react-redux';
 import { addItemToCart, addToWishlist } from '../redux/actions/Actions';

@@ -1,17 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Home from './screens/Home';
-import Login from './screens/Login';
-import SignUp from './screens/SignUp';
-import Splash from './screens/Splash';
-import Forget from './screens/Forget';
-import MyAddress from './screens/MyAddress';
-import AddAddress from './screens/AddAddress';
-import Checkout from './screens/Checkout';
-import OrderSuccess from './OrderSuccess';
-import Orders from './screens/Orders';
-import MyWishlist from './screens/MyWishlist';
+import Home from '../screens/Home';
+import Login from '../screens/Login';
+import SignUp from '../screens/SignUp';
+import Splash from '../screens/Splash';
+import Forget from '../screens/Forget';
+import MyAddress from '../screens/MyAddress';
+import AddAddress from '../screens/AddAddress';
+import Checkout from '../screens/Checkout';
+import OrderSuccess from '../OrderSuccess';
+import Orders from '../screens/Orders';
+import MyWishlist from '../screens/MyWishlist';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
