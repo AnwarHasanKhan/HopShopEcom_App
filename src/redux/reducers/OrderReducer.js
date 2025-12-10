@@ -1,4 +1,4 @@
-import { ADD_ORDER, DELETE_ORDER } from '../ActionTypes';
+import { ADD_ORDER, CLEAR_ORDER, DELETE_ORDER } from '../ActionTypes';
 
 const initialState = [];
 
@@ -10,9 +10,9 @@ export default (state = initialState, { type, payload }) => {
       const deleteArray1 = state.filter((item, index) => {
         return index !== payload;
       });
-
       return deleteArray1;
-
+    case CLEAR_ORDER:
+      return [];
     default:
       return state;
   }

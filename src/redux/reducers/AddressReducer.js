@@ -1,4 +1,4 @@
-import { ADD_ADDRESS, DELETE_ADDRESS } from '../ActionTypes';
+import { ADD_ADDRESS, CLEAR_ADDRESS, DELETE_ADDRESS } from '../ActionTypes';
 
 const initialState = [];
 
@@ -10,9 +10,9 @@ export default (state = initialState, { type, payload }) => {
       const deleteArray1 = state.filter((item, index) => {
         return index !== payload;
       });
-
       return deleteArray1;
-
+    case CLEAR_ADDRESS:
+      return [];
     default:
       return state;
   }

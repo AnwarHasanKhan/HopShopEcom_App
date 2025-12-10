@@ -1,8 +1,290 @@
-import { View, Text, Image, TextInput, Alert, ScrollView } from 'react-native';
+// import { View, Text, Image, TextInput, Alert, ScrollView } from 'react-native';
+// import React, { useState } from 'react';
+// import CustomTextInput from '../common/CustomTextInput';
+// import CommonButton from '../common/CommonButton';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+
+// const SignUp = ({ navigation }) => {
+//   const [userName, setUserName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [mobile, setMobile] = useState('');
+//   const [password, setPassword] = useState('');
+//   const [confirmPassword, setConfirmPassword] = useState('');
+//   const [badUserName, setBadUserName] = useState(false);
+//   const [badEmail, setBadEmail] = useState(false);
+//   const [badMobile, setBadMobile] = useState(false);
+//   const [badPassword, setBadPassword] = useState(false);
+//   const [badConfirmPassword, setBadConfirmPassword] = useState(false);
+//   const [showPassword, setShowPassword] = useState(false);
+//   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+//   const [loading, setLoading] = useState(false);
+//   const phoneRegex = /^\+?\d{10,15}$/;
+
+//   const validation = async () => {
+//     let isValid = true;
+
+//     if (userName === '') {
+//       setBadUserName(true);
+//       isValid = false;
+//     } else {
+//       setBadUserName(false);
+//     }
+
+//     if (email === '' || !email.includes('@') || !email.includes('.com')) {
+//       setBadEmail(true);
+//       isValid = false;
+//     } else {
+//       setBadEmail(false);
+//     }
+
+//     if (!phoneRegex.test(mobile)) {
+//       setBadMobile(true);
+//       isValid = false;
+//     } else {
+//       setBadMobile(false);
+//     }
+
+//     if (password === '' || password.length > 8) {
+//       setBadPassword(true);
+//       isValid = false;
+//     } else {
+//       setBadPassword(false);
+//     }
+
+//     if (confirmPassword === '' || confirmPassword !== password) {
+//       setBadConfirmPassword(true);
+//       isValid = false;
+//     } else {
+//       setBadConfirmPassword(false);
+//     }
+
+//     if (!isValid) {
+//       return;
+//     }
+
+//     await saveData();
+//   };
+
+//   const saveData = async () => {
+//     try {
+//       const existingUsers = await AsyncStorage.getItem('users');
+//       let users = existingUsers ? JSON.parse(existingUsers) : [];
+
+//       const emailExists = users.some(user => user.Email === email);
+//       const mobileExists = users.some(user => user.Mobile === mobile);
+
+//       if (emailExists) {
+//         Alert.alert('Email already exists! Please use a different email.');
+//         return false;
+//       }
+
+//       if (mobileExists) {
+//         Alert.alert(
+//           'Mobile number already exists! Please use a different number.',
+//         );
+//         return false;
+//       }
+
+//       const newUser = {
+//         Name: userName,
+//         Email: email,
+//         Mobile: mobile,
+//         Password: password,
+//       };
+
+//       users.push(newUser);
+
+//       await AsyncStorage.setItem('users', JSON.stringify(users));
+
+//       Alert.alert('Account Created Successfully!');
+//       navigation.goBack();
+
+//       return true;
+//     } catch (error) {
+//       console.log('Error saving user:', error);
+//       return false;
+//     }
+//   };
+
+//   return (
+//     <ScrollView>
+//       <View style={{ flex: 1 }}>
+//         <Image
+//           source={require('../assets/playstore.png')}
+//           style={{
+//             width: 100,
+//             height: 100,
+//             alignSelf: 'center',
+//             marginTop: 180,
+//             borderRadius: 20,
+//           }}
+//         />
+//         <Text
+//           style={{
+//             alignSelf: 'center',
+//             fontSize: 25,
+//             fontWeight: '600',
+//             marginTop: 20,
+//             color: '#000',
+//           }}
+//         >
+//           Create Account
+//         </Text>
+//         <CustomTextInput
+//           placeholder={'Enter Name...'}
+//           value={userName}
+//           onChangeText={actualData => {
+//             setUserName(actualData);
+//           }}
+//           icon={require('../assets/user.png')}
+//         />
+//         {badUserName === true && (
+//           <Text
+//             style={{
+//               marginTop: 5,
+//               marginLeft: 35,
+//               color: 'red',
+//               fontSize: 12,
+//             }}
+//           >
+//             Pleas Enter Username!!
+//           </Text>
+//         )}
+//         <CustomTextInput
+//           placeholder={'Enter Email...'}
+//           value={email}
+//           onChangeText={actualData => {
+//             setEmail(actualData);
+//           }}
+//           icon={require('../assets/mail.png')}
+//         />
+//         {badEmail === true && (
+//           <Text
+//             style={{
+//               marginTop: 5,
+//               marginLeft: 35,
+//               color: 'red',
+//               fontSize: 12,
+//             }}
+//           >
+//             Please Enter Email ID
+//           </Text>
+//         )}
+//         <CustomTextInput
+//           placeholder={'Enter Mobile...'}
+//           value={mobile}
+//           onChangeText={actualData => {
+//             setMobile(actualData);
+//           }}
+//           icon={require('../assets/smartphone.png')}
+//         />
+//         {badMobile === true && (
+//           <Text
+//             style={{
+//               marginTop: 5,
+//               marginLeft: 35,
+//               color: 'red',
+//               fontSize: 12,
+//             }}
+//           >
+//             Please Enter Mobile Number
+//           </Text>
+//         )}
+//         <CustomTextInput
+//           placeholder={'Create Password...'}
+//           value={password}
+//           onChangeText={setPassword}
+//           icon={require('../assets/padlock.png')}
+//           secureTextEntry={!showPassword}
+//           rightIcon={
+//             !showPassword
+//               ? require('../assets/eye-off.png')
+//               : require('../assets/eye.png')
+//           }
+//           onRightIconPress={() => setShowPassword(!showPassword)}
+//         />
+//         {badPassword === true && (
+//           <Text
+//             style={{
+//               marginTop: 5,
+//               marginLeft: 35,
+//               color: 'red',
+//               fontSize: 12,
+//             }}
+//           >
+//             Please Enter Password
+//           </Text>
+//         )}
+//         <CustomTextInput
+//           placeholder={'Confirm Password...'}
+//           value={confirmPassword}
+//           onChangeText={actualData => {
+//             setConfirmPassword(actualData);
+//           }}
+//           icon={require('../assets/padlock.png')}
+//           secureTextEntry={!showConfirmPassword}
+//           rightIcon={
+//             !showConfirmPassword
+//               ? require('../assets/eye-off.png')
+//               : require('../assets/eye.png')
+//           }
+//           onRightIconPress={() => setShowConfirmPassword(!showConfirmPassword)}
+//         />
+//         {badConfirmPassword === true && (
+//           <Text
+//             style={{
+//               marginTop: 5,
+//               marginLeft: 35,
+//               color: 'red',
+//               fontSize: 12,
+//             }}
+//           >
+//             Enter Same Password Again
+//           </Text>
+//         )}
+//         <CommonButton
+//           title={'SignUp'}
+//           bgcolor={'#000'}
+//           textcolor={'#fff'}
+//           size={20}
+//           thick={'600'}
+//           onPress={() => {
+//             validation();
+//           }}
+//         />
+//         <Text
+//           style={{
+//             fontSize: 20,
+//             fontWeight: '600',
+//             alignSelf: 'center',
+//             marginTop: 20,
+//             textDecorationLine: 'underline',
+//           }}
+//           onPress={() => {
+//             navigation.goBack();
+//           }}
+//         >
+//           Already Have an Account?
+//         </Text>
+//       </View>
+//     </ScrollView>
+//   );
+// };
+
+// export default SignUp;
+
+import { View, Text, Image, Alert, ScrollView } from 'react-native';
 import React, { useState } from 'react';
 import CustomTextInput from '../common/CustomTextInput';
 import CommonButton from '../common/CommonButton';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import firebaseConfig from '../services/firebaseConfig';
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
 const SignUp = ({ navigation }) => {
   const [userName, setUserName] = useState('');
@@ -17,10 +299,9 @@ const SignUp = ({ navigation }) => {
   const [badConfirmPassword, setBadConfirmPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
   const phoneRegex = /^\+?\d{10,15}$/;
 
-  const validation = async () => {
+  const validation = () => {
     let isValid = true;
 
     if (userName === '') {
@@ -29,28 +310,24 @@ const SignUp = ({ navigation }) => {
     } else {
       setBadUserName(false);
     }
-
     if (email === '' || !email.includes('@') || !email.includes('.com')) {
       setBadEmail(true);
       isValid = false;
     } else {
       setBadEmail(false);
     }
-
     if (!phoneRegex.test(mobile)) {
       setBadMobile(true);
       isValid = false;
     } else {
       setBadMobile(false);
     }
-
-    if (password === '' || password.length > 8) {
+    if (password === '' || password.length < 6) {
       setBadPassword(true);
       isValid = false;
     } else {
       setBadPassword(false);
     }
-
     if (confirmPassword === '' || confirmPassword !== password) {
       setBadConfirmPassword(true);
       isValid = false;
@@ -58,51 +335,31 @@ const SignUp = ({ navigation }) => {
       setBadConfirmPassword(false);
     }
 
-    if (!isValid) {
-      return;
-    }
+    if (!isValid) return;
 
-    await saveData();
+    registerUser();
   };
 
-  const saveData = async () => {
+  const registerUser = async () => {
     try {
-      const existingUsers = await AsyncStorage.getItem('users');
-      let users = existingUsers ? JSON.parse(existingUsers) : [];
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password,
+      );
+      const user = userCredential.user;
 
-      const emailExists = users.some(user => user.Email === email);
-      const mobileExists = users.some(user => user.Mobile === mobile);
+      await setDoc(doc(db, 'users', user.uid), {
+        name: userName,
+        email: email,
+        mobile: mobile,
+        createdAt: new Date(),
+      });
 
-      if (emailExists) {
-        Alert.alert('Email already exists! Please use a different email.');
-        return false;
-      }
-
-      if (mobileExists) {
-        Alert.alert(
-          'Mobile number already exists! Please use a different number.',
-        );
-        return false;
-      }
-
-      const newUser = {
-        Name: userName,
-        Email: email,
-        Mobile: mobile,
-        Password: password,
-      };
-
-      users.push(newUser);
-
-      await AsyncStorage.setItem('users', JSON.stringify(users));
-
-      Alert.alert('Account Created Successfully!');
+      Alert.alert('Success', `Account Created: ${user.email}`);
       navigation.goBack();
-
-      return true;
     } catch (error) {
-      console.log('Error saving user:', error);
-      return false;
+      Alert.alert('Error', error.message);
     }
   };
 
@@ -130,66 +387,43 @@ const SignUp = ({ navigation }) => {
         >
           Create Account
         </Text>
+
         <CustomTextInput
           placeholder={'Enter Name...'}
           value={userName}
-          onChangeText={actualData => {
-            setUserName(actualData);
-          }}
+          onChangeText={setUserName}
           icon={require('../assets/user.png')}
         />
-        {badUserName === true && (
-          <Text
-            style={{
-              marginTop: 5,
-              marginLeft: 35,
-              color: 'red',
-              fontSize: 12,
-            }}
-          >
-            Pleas Enter Username!!
+        {badUserName && (
+          <Text style={{ marginLeft: 35, color: 'red', fontSize: 12 }}>
+            Please Enter Username!
           </Text>
         )}
+
         <CustomTextInput
           placeholder={'Enter Email...'}
           value={email}
-          onChangeText={actualData => {
-            setEmail(actualData);
-          }}
+          onChangeText={setEmail}
           icon={require('../assets/mail.png')}
         />
-        {badEmail === true && (
-          <Text
-            style={{
-              marginTop: 5,
-              marginLeft: 35,
-              color: 'red',
-              fontSize: 12,
-            }}
-          >
-            Please Enter Email ID
+        {badEmail && (
+          <Text style={{ marginLeft: 35, color: 'red', fontSize: 12 }}>
+            Please Enter a Valid Email
           </Text>
         )}
+
         <CustomTextInput
           placeholder={'Enter Mobile...'}
           value={mobile}
-          onChangeText={actualData => {
-            setMobile(actualData);
-          }}
+          onChangeText={setMobile}
           icon={require('../assets/smartphone.png')}
         />
-        {badMobile === true && (
-          <Text
-            style={{
-              marginTop: 5,
-              marginLeft: 35,
-              color: 'red',
-              fontSize: 12,
-            }}
-          >
+        {badMobile && (
+          <Text style={{ marginLeft: 35, color: 'red', fontSize: 12 }}>
             Please Enter Mobile Number
           </Text>
         )}
+
         <CustomTextInput
           placeholder={'Create Password...'}
           value={password}
@@ -203,24 +437,16 @@ const SignUp = ({ navigation }) => {
           }
           onRightIconPress={() => setShowPassword(!showPassword)}
         />
-        {badPassword === true && (
-          <Text
-            style={{
-              marginTop: 5,
-              marginLeft: 35,
-              color: 'red',
-              fontSize: 12,
-            }}
-          >
-            Please Enter Password
+        {badPassword && (
+          <Text style={{ marginLeft: 35, color: 'red', fontSize: 12 }}>
+            Password must be at least 6 characters
           </Text>
         )}
+
         <CustomTextInput
           placeholder={'Confirm Password...'}
           value={confirmPassword}
-          onChangeText={actualData => {
-            setConfirmPassword(actualData);
-          }}
+          onChangeText={setConfirmPassword}
           icon={require('../assets/padlock.png')}
           secureTextEntry={!showConfirmPassword}
           rightIcon={
@@ -230,28 +456,21 @@ const SignUp = ({ navigation }) => {
           }
           onRightIconPress={() => setShowConfirmPassword(!showConfirmPassword)}
         />
-        {badConfirmPassword === true && (
-          <Text
-            style={{
-              marginTop: 5,
-              marginLeft: 35,
-              color: 'red',
-              fontSize: 12,
-            }}
-          >
-            Enter Same Password Again
+        {badConfirmPassword && (
+          <Text style={{ marginLeft: 35, color: 'red', fontSize: 12 }}>
+            Passwords do not match
           </Text>
         )}
+
         <CommonButton
           title={'SignUp'}
           bgcolor={'#000'}
           textcolor={'#fff'}
           size={20}
           thick={'600'}
-          onPress={() => {
-            validation();
-          }}
+          onPress={validation}
         />
+
         <Text
           style={{
             fontSize: 20,
@@ -260,9 +479,7 @@ const SignUp = ({ navigation }) => {
             marginTop: 20,
             textDecorationLine: 'underline',
           }}
-          onPress={() => {
-            navigation.goBack();
-          }}
+          onPress={() => navigation.goBack()}
         >
           Already Have an Account?
         </Text>

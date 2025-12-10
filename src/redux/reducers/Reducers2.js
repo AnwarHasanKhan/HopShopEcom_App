@@ -1,4 +1,8 @@
-import { ADD_TO_WISHLIST, REMOVE_FROM_WISHLIST } from '../ActionTypes';
+import {
+  ADD_TO_WISHLIST,
+  CLEAR_WISHLIST,
+  REMOVE_FROM_WISHLIST,
+} from '../ActionTypes';
 
 const initialState = [];
 
@@ -10,9 +14,9 @@ export default (state = initialState, { type, payload }) => {
       const deleteArray2 = state.filter((item, index) => {
         return index !== payload;
       });
-
       return deleteArray2;
-
+    case CLEAR_WISHLIST:
+      return [];
     default:
       return state;
   }

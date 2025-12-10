@@ -3,7 +3,10 @@ import {
   ADD_ORDER,
   ADD_TO_CART,
   ADD_TO_WISHLIST,
+  CLEAR_ADDRESS,
   CLEAR_CART,
+  CLEAR_ORDER,
+  CLEAR_WISHLIST,
   DELETE_ADDRESS,
   DELETE_ORDER,
   REMOVE_FROM_CART,
@@ -44,4 +47,13 @@ export const deleteOrder = index => ({
 });
 export const clearCart = () => ({
   type: CLEAR_CART,
+});
+export const clearWishlist = () => ({
+  type: CLEAR_WISHLIST,
+});
+export const clearAddress = () => ({
+  type: CLEAR_ADDRESS,
+});
+export const clearOrder = () => ({
+  type: CLEAR_ORDER,
 });

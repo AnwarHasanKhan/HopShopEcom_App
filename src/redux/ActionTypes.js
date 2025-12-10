@@ -7,3 +7,6 @@ export const DELETE_ADDRESS = 'DELETE_ADDRESS';
 export const ADD_ORDER = 'ADD_ORDER';
 export const DELETE_ORDER = 'DELETE_ORDER';
 export const CLEAR_CART = 'CLEAR_CART';
+export const CLEAR_WISHLIST = 'CLEAR_WISHLIST';
+export const CLEAR_ADDRESS = 'CLEAR_ADDRESS';
+export const CLEAR_ORDER = 'CLEAR_ORDER';
