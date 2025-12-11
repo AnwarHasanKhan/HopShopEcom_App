@@ -39,7 +39,7 @@ const ProductScreen = () => {
     return (
       <View style={styles.center}>
         <ActivityIndicator size="large" color="#007AFF" />
-        <Text>Loading products...</Text>
+        <Text>Loading more products...</Text>
       </View>
     );
   }
