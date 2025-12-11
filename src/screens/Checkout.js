@@ -21,6 +21,7 @@ import {
   removeFromCart,
 } from '../redux/actions/Actions';
 import CommonButton from '../common/CommonButton';
+import { REMOVE_FROM_CART } from '../redux/ActionTypes';
 
 const Checkout = () => {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ const Checkout = () => {
   const getTotal = () => {
     let tempTotal = 0;
     cartData.map(item => {
-      tempTotal = tempTotal + usdToInr * item.price;
+      tempTotal = tempTotal + Math.round(item.price * usdToInr * (item.quantity || 1));
     });
     return tempTotal;
   };
@@ -129,6 +130,24 @@ const Checkout = () => {
                     <Text style={{ fontSize: 14, fontWeight: '500' }}>
                       ₹{Math.round(usdToInr * item.price)}
                     </Text>
+                    <View
+                      style={{
+                        marginBottom: 5,
+                        alignItems: 'flex-start',
+                      }}
+                    >
+                      <Text
+                        style={{
+                          backgroundColor: '#f3f3f3ff',
+                          padding: 5,
+                          borderRadius: 20,
+                          fontSize: 14,
+                          fontWeight: '600',
+                        }}
+                      >
+                        Qty: {item.quantity || 1}
+                      </Text>
+                    </View>
                   </View>
                   <View
                     style={{
@@ -150,7 +169,7 @@ const Checkout = () => {
                     >
                       <Text style={{ fontSize: 18 }}>+</Text>
                     </Pressable>
-                    <Pressable onPress={() => dispatch(removeFromCart(index))}>
+                    <Pressable onPress={() => dispatch({ type: REMOVE_FROM_CART, payload: item })}>
                       <Text style={{ fontSize: 20 }}>-</Text>
                     </Pressable>
                   </View>

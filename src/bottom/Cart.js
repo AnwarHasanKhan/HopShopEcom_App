@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeFromCart } from '../redux/actions/Actions';
 import CommonButton from '../common/CommonButton';
 import { useNavigation } from '@react-navigation/native';
+import { REMOVE_FROM_CART } from '../redux/ActionTypes';
 
 const Cart = () => {
   const cartData = useSelector(state => state.Reducers);
@@ -28,7 +29,9 @@ const Cart = () => {
           renderItem={({ item, index }) => (
             <CartItem
               item={item}
-              onRemoveItem={() => dispatch(removeFromCart(index))}
+              onRemoveItem={() =>
+                dispatch({ type: REMOVE_FROM_CART, payload: item })
+              }
             />
           )}
         />

@@ -1,177 +1,3 @@
-// import { View, Text, Image, TextInput, Alert } from 'react-native';
-// import React, { useState } from 'react';
-// import CustomTextInput from '../common/CustomTextInput';
-// import CommonButton from '../common/CommonButton';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-// const Login = ({ navigation }) => {
-//   const [email, setemail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [badEmail, setBadEmail] = useState(false);
-//   const [badPassword, setBadPassword] = useState(false);
-//   const [showPassword, setShowPassword] = useState(false);
-
-//   const submit = () => {
-//     if (email !== '' && email.includes('@') && email.includes('.com')) {
-//       setBadEmail(false);
-//     } else {
-//       setBadEmail(true);
-//     }
-//     if (password !== '') {
-//       setBadPassword(false);
-//     } else {
-//       setBadPassword(true);
-//     }
-//     getData();
-//   };
-
-//   const getData = async () => {
-//     try {
-//       const usersData = await AsyncStorage.getItem('users');
-//       const users = usersData ? JSON.parse(usersData) : [];
-
-//       if (users.length === 0) {
-//         Alert.alert('No users found. Please sign up first.');
-//         return;
-//       }
-
-//       const matchedUser = users.find(
-//         user => user.Email === email && user.Password === password,
-//       );
-
-//       console.log(users);
-//       if (matchedUser) {
-//         await AsyncStorage.setItem('loggedInUser', JSON.stringify(matchedUser));
-//         navigation.navigate('Home');
-//       } else {
-//         Alert.alert('Invalid Email or Password!');
-//       }
-//     } catch (error) {
-//       console.log('Error reading users:', error);
-//     }
-//   };
-
-//   return (
-//     <View style={{ flex: 1 }}>
-//       <Image
-//         source={require('../assets/playstore.png')}
-//         style={{
-//           width: 90,
-//           height: 90,
-//           alignSelf: 'center',
-//           marginTop: 200,
-//           borderRadius: 10,
-//         }}
-//       />
-//       <Text
-//         style={{
-//           alignSelf: 'center',
-//           fontSize: 25,
-//           fontWeight: '600',
-//           marginTop: 20,
-//           color: '#000',
-//         }}
-//       >
-//         Login
-//       </Text>
-//       <CustomTextInput
-//         placeholder={'Enter Email...'}
-//         value={email}
-//         onChangeText={actualData => setemail(actualData)}
-//         icon={require('../assets/mail.png')}
-//       />
-//       {badEmail === true && (
-//         <Text
-//           style={{
-//             marginTop: 5,
-//             marginLeft: 35,
-//             color: 'red',
-//             fontSize: 12,
-//           }}
-//         >
-//           Please Enter Email ID
-//         </Text>
-//       )}
-//       {/* <CustomTextInput
-//         placeholder={'Enter Password...'}
-//         value={password}
-//         onChangeText={actualData => setPassword(actualData)}
-//         icon={require('../assets/padlock.png')}
-//         type
-//       /> */}
-//       <CustomTextInput
-//         placeholder={'Create Password...'}
-//         value={password}
-//         onChangeText={setPassword}
-//         icon={require('../assets/padlock.png')}
-//         secureTextEntry={!showPassword}
-//         rightIcon={
-//           !showPassword
-//             ? require('../assets/eye-off.png')
-//             : require('../assets/eye.png')
-//         }
-//         onRightIconPress={() => setShowPassword(!showPassword)}
-//       />
-//       {badPassword === true && (
-//         <Text
-//           style={{
-//             marginTop: 5,
-//             marginLeft: 35,
-//             color: 'red',
-//             fontSize: 12,
-//           }}
-//         >
-//           Please Enter Password!
-//         </Text>
-//       )}
-//       <Text
-//         style={{
-//           fontSize: 14,
-//           fontWeight: '600',
-//           alignSelf: 'flex-end',
-//           marginTop: 10,
-//           marginRight: 30,
-//           textDecorationLine: 'underline',
-//         }}
-//         onPress={() => {
-//           navigation.navigate('Forget');
-//         }}
-//       >
-//         Forgot Password?
-//       </Text>
-//       <CommonButton
-//         title={'Login'}
-//         bgcolor={'#000'}
-//         textcolor={'#fff'}
-//         size={20}
-//         thick={'600'}
-//         onPress={() => {
-//           submit();
-//         }}
-//       />
-//       <Text
-//         style={{
-//           fontSize: 20,
-//           fontWeight: '600',
-//           alignSelf: 'center',
-//           marginTop: 20,
-//           textDecorationLine: 'underline',
-//         }}
-//         onPress={() => {
-//           navigation.navigate('SignUp');
-//         }}
-//       >
-//         Create New Account?
-//       </Text>
-//     </View>
-//   );
-// };
-
-// export default Login;
-
-
-
-
 import { View, Text, Image, Alert } from 'react-native';
 import React, { useState } from 'react';
 import CustomTextInput from '../common/CustomTextInput';
@@ -179,9 +5,17 @@ import CommonButton from '../common/CommonButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  getDocs,
+} from 'firebase/firestore';
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../services/firebaseConfig';
+import { useDispatch } from 'react-redux';
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -193,6 +27,8 @@ const Login = ({ navigation }) => {
   const [badEmail, setBadEmail] = useState(false);
   const [badPassword, setBadPassword] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const dispatch = useDispatch();
 
   const submit = async () => {
     if (!email || !email.includes('@') || !email.includes('.com')) {
@@ -218,22 +54,62 @@ const Login = ({ navigation }) => {
 
       const user = userCredential.user;
 
-      const docRef = doc(db, 'users', user.uid);
-      const docSnap = await getDoc(docRef);
+      //     const docRef = doc(db, 'users', user.uid);
+      //     const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        const profile = docSnap.data();
+      //     if (docSnap.exists()) {
+      //       const profile = docSnap.data();
 
-        await AsyncStorage.setItem("loggedInUser", JSON.stringify(profile));
+      //       await AsyncStorage.setItem('loggedInUser', JSON.stringify(profile));
 
-        Alert.alert("Login Successful!");
+      //       Alert.alert('Login Successful!');
 
-        navigation.navigate("Home");
-      } else {
-        Alert.alert("Profile not found in Firestore!");
+      //       navigation.navigate('Home');
+      //     } else {
+      //       Alert.alert('Profile not found in Firestore!');
+      //     }
+      //   } catch (error) {
+      //     Alert.alert('Error', error.message);
+      //   }
+      // };
+
+      // 1️⃣ Create Firestore document if not exists
+      const userDocRef = doc(db, 'users', user.uid);
+      const userDocSnap = await getDoc(userDocRef);
+
+      if (!userDocSnap.exists()) {
+        await setDoc(userDocRef, {
+          email: user.email,
+          createdAt: new Date(),
+        });
       }
+
+      const profile = { uid: user.uid, email: user.email };
+      await AsyncStorage.setItem('loggedInUser', JSON.stringify(profile));
+
+      // 2️⃣ Load cart
+      const cartSnap = await getDocs(collection(db, 'users', user.uid, 'cart'));
+      const cartItems = cartSnap.docs.map(doc => doc.data());
+      dispatch({ type: 'SET_CART', payload: cartItems });
+
+      // 3️⃣ Load wishlist
+      const wishlistSnap = await getDocs(
+        collection(db, 'users', user.uid, 'wishlist'),
+      );
+      const wishlistItems = wishlistSnap.docs.map(doc => doc.data());
+      dispatch({ type: 'SET_WISHLIST', payload: wishlistItems });
+
+      // 4️⃣ Load addresses
+      const addressesSnap = await getDocs(
+        collection(db, 'users', user.uid, 'addresses'),
+      );
+      const addresses = addressesSnap.docs.map(doc => doc.data());
+      dispatch({ type: 'SET_ADDRESS', payload: addresses });
+
+      Alert.alert('Login Successful!');
+      navigation.navigate('Home');
     } catch (error) {
-      Alert.alert("Error", error.message);
+      Alert.alert('Error', error.message);
     }
   };
 

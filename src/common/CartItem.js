@@ -31,12 +31,31 @@ const CartItem = ({ item, onRemoveItem }) => {
         <Text style={{ fontSize: 16, fontWeight: '500' }}>
           ₹{Math.round(usdToInr * item.price)}
         </Text>
+        <TouchableOpacity
+          style={{
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+          }}
+        >
+          <Text
+            style={{
+              backgroundColor: '#e7e7e7cd',
+              borderRadius: 10,
+              padding:5,
+              fontSize: 12,
+              fontWeight: '600',
+            }}
+          >
+            Qty: {item.quantity || 1}
+          </Text>
+        </TouchableOpacity>
       </View>
       <View
         style={{
           width: '20%',
           paddingVertical: 10,
           paddingHorizontal: 5,
+          justifyContent: 'space-between',
         }}
       >
         <TouchableOpacity
