@@ -5,10 +5,13 @@ import CustomTextInput from '../common/CustomTextInput';
 import CommonButton from '../common/CommonButton';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { products } from '../models/Products';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../redux/actions/Actions';
 
 const Search = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const dispatch = useDispatch();
 
   const allProducts = products.category.flatMap(cat => cat.data);
   const usdToInr = 89.81;
@@ -72,11 +75,13 @@ const Search = () => {
                 </View>
                 <View
                   style={{
-                    width: '15%',
+                    width: '22%',
                     flexDirection: 'row',
                     justifyContent: 'space-between',
                     backgroundColor: '#f3f3f3ff',
                     paddingHorizontal: 10,
+                    justifyContent:'center',
+                    padding:5,
                     borderRadius: 20,
                     top: 10,
                     right: 10,
@@ -88,10 +93,7 @@ const Search = () => {
                       dispatch(addItemToCart(item));
                     }}
                   >
-                    <Text style={{ fontSize: 18 }}>+</Text>
-                  </Pressable>
-                  <Pressable onPress={() => dispatch(removeFromCart(index))}>
-                    <Text style={{ fontSize: 20 }}>-</Text>
+                    <Text style={{ fontSize: 12, fontWeight:'bold' }}>AddToCart</Text>
                   </Pressable>
                 </View>
               </View>

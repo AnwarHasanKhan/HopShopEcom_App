@@ -31,23 +31,31 @@ const Checkout = () => {
   const dispatch = useDispatch();
 
   const usdToInr = 89.81;
+  const platformFee = 55;
+  const deliveryFee = 40;
 
   const getTotal = () => {
     let tempTotal = 0;
     cartData.map(item => {
-      tempTotal = tempTotal + Math.round(item.price * usdToInr * (item.quantity || 1));
+      tempTotal =
+        tempTotal + Math.round(item.price * usdToInr * (item.quantity || 1));
     });
     return tempTotal;
   };
 
+  const getGrandTotal = () => {
+    return getTotal() + platformFee + deliveryFee;
+  };
+
   const handleCheckout = () => {
+    
     var options = {
       description: `Payment for ${cartData.length} item`,
       image:
         'https://images.pexels.com/photos/12495665/pexels-photo-12495665.jpeg',
       currency: 'INR',
       key: 'rzp_test_Rn3vbQb3deaZ9q',
-      amount: '' + parseInt(getTotal() * 100) + '', // amount in Rupee
+      amount: '' + parseInt(getGrandTotal() * 100) + '', // amount in Rupee
       name: 'RazorPay!!',
       prefill: {
         email: 'anwar@example.com',
@@ -219,7 +227,7 @@ const Checkout = () => {
         >
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Total</Text>
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-            ₹{Math.round(getTotal())}
+            ₹{Math.round(getGrandTotal())}
           </Text>
         </View>
         <View style={{ marginBottom: 25 }}>
@@ -239,6 +247,7 @@ const Checkout = () => {
               fontSize: 16,
               fontWeight: '500',
               marginLeft: 10,
+              fontStyle:'italic',
             }}
           >
             {selectedAddress == ''
