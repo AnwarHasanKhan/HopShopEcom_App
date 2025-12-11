@@ -5,6 +5,7 @@ import {
   Image,
   ImageBackground,
   FlatList,
+  ActivityIndicator,
   ScrollView,
   StyleSheet,
 } from 'react-native';
@@ -31,19 +32,36 @@ const Main = () => {
   const [jacketOpen, setJacketOpen] = useState(true);
   const [slipperOpen, setSlipperOpen] = useState(true);
   const [trouserOpen, setTrouserOpen] = useState(true);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
-    let tempCategory = [];
-    products.category.map(item => {
-      tempCategory.push(item);
-    });
-    setCategoryList(tempCategory);
-    setTshirtList(products.category[0].data);
-    setJeansList(products.category[1].data);
-    setShoesList(products.category[2].data);
-    setJacketList(products.category[3].data);
-    setSlipperList(products.category[4].data);
-    setTrouserList(products.category[5].data);
+    const timer = setTimeout(() => {
+      let tempCategory = [];
+      products.category.map(item => {
+        tempCategory.push(item);
+      });
+      setCategoryList(tempCategory);
+      setTshirtList(products.category[0].data);
+      setJeansList(products.category[1].data);
+      setShoesList(products.category[2].data);
+      setJacketList(products.category[3].data);
+      setSlipperList(products.category[4].data);
+      setTrouserList(products.category[5].data);
+      setLoading(false); 
+    }, 1000);
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator size="large" color="#007AFF" />
+        <Text style={{ marginTop: 10, fontSize: 16, fontWeight: '500' }}>
+          Loading products...
+        </Text>
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>

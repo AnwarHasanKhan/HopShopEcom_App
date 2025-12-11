@@ -9,7 +9,12 @@ const initialState = [];
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_TO_WISHLIST:
-      return [...state, payload];
+      const exists = state.find(item => item.id === payload.id);
+      if (exists) {
+        return state;
+      } else {
+        return [...state, payload];
+      }
     case REMOVE_FROM_WISHLIST:
       const deleteArray2 = state.filter((item, index) => {
         return index !== payload;
