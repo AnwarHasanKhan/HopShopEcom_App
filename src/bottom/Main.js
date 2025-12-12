@@ -47,7 +47,7 @@ const Main = () => {
       setJacketList(products.category[3].data);
       setSlipperList(products.category[4].data);
       setTrouserList(products.category[5].data);
-      setLoading(false); 
+      setLoading(false);
     }, 1000);
     return () => clearTimeout(timer);
   }, []);
@@ -73,7 +73,7 @@ const Main = () => {
           }}
         >
           <ImageBackground
-            source={require('../assets/6560450.jpg')}
+            source={require('../assets/6560450.png')}
             style={{
               width: '100%',
               height: 150,
@@ -83,22 +83,9 @@ const Main = () => {
               borderRadius: 10,
               overflow: 'hidden',
             }}
-          >
-            <Text
-              style={{
-                fontSize: 40,
-                fontWeight: '700',
-                alignSelf: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontStyle: 'italic',
-              }}
-            >
-              HOPSHOP!
-            </Text>
-          </ImageBackground>
+          ></ImageBackground>
         </View>
-        {/* <View style={{ marginTop: 20}}>
+        <View style={{ paddingTop: 15, paddingBottom:15}}>
           <FlatList
             data={categoryList}
             horizontal
@@ -107,13 +94,12 @@ const Main = () => {
               return (
                 <TouchableOpacity
                   style={{
-                    paddingVertical: 10,
-                    paddingHorizontal: 30,
-                    borderWidth: 1,
+                    paddingVertical: 5,
+                    paddingHorizontal: 11,
+                    borderWidth: 0.5,
                     marginLeft: 10,
                     backgroundColor: '#dededeff',
                     borderRadius: 20,
-                    elevation: 2,
                   }}
                 >
                   <Text
@@ -127,7 +113,7 @@ const Main = () => {
               );
             }}
           />
-        </View> */}
+        </View>
         <TouchableOpacity
           style={styles.categoryheader}
           onPress={() => setTshirtOpen(!tshirtopen)}
@@ -152,10 +138,11 @@ const Main = () => {
           )}
         </TouchableOpacity>
         {tshirtopen && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 5 }}>
             <FlatList
               data={tshirtList}
               horizontal
+              nestedScrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => {
                 return (
@@ -197,10 +184,11 @@ const Main = () => {
           )}
         </TouchableOpacity>
         {jeansOpen && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 5 }}>
             <FlatList
               data={jeansList}
               horizontal
+              nestedScrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => {
                 return (
@@ -242,10 +230,11 @@ const Main = () => {
           )}
         </TouchableOpacity>
         {shoesOpen && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 5 }}>
             <FlatList
               data={shoesList}
               horizontal
+              nestedScrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => {
                 return (
@@ -287,10 +276,11 @@ const Main = () => {
           )}
         </TouchableOpacity>
         {jacketOpen && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 5 }}>
             <FlatList
               data={jacketList}
               horizontal
+              nestedScrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => {
                 return (
@@ -332,10 +322,11 @@ const Main = () => {
           )}
         </TouchableOpacity>
         {slipperOpen && (
-          <View style={{ marginTop: 10 }}>
+          <View style={{ marginTop: 5 }}>
             <FlatList
               data={slipperList}
               horizontal
+              nestedScrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => {
                 return (
@@ -386,10 +377,11 @@ const Main = () => {
           )}
         </TouchableOpacity>
         {trouserOpen && (
-          <View style={{ marginTop: 10, marginBottom: 50 }}>
+          <View style={{ marginTop: 5, marginBottom: 50 }}>
             <FlatList
               data={trouserList}
               horizontal
+              nestedScrollEnabled={true}
               showsHorizontalScrollIndicator={false}
               renderItem={({ item, index }) => {
                 return (
@@ -416,14 +408,14 @@ export default Main;
 
 const styles = StyleSheet.create({
   categoryheader: {
-    marginTop: 16,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 10,
   },
   txtheader: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
   },
 });

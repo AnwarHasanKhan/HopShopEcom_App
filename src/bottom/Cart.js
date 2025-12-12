@@ -66,11 +66,19 @@ const Cart = () => {
         >
           <View
             style={{
+              borderTopWidth: 0.5,
+              padding: 1,
+              backgroundColor:'#000000ff'
+            }}
+          >
+          </View>
+          <View
+            style={{
               width: '100%',
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              borderTopWidth: 1,
+              borderTopWidth: 0.5,
               padding: 10,
               paddingRight: 20,
             }}
