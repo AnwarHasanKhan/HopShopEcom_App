@@ -1,8 +1,9 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { removeFromWishlist } from '../redux/actions/Actions';
 
-const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
+const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem, }) => {
   const wishlistData = useSelector(state => state.Reducers2) || [];
   const isInWishlist = wishlistData.some(
     wishlistItem => wishlistItem.id === item.id,
@@ -96,24 +97,25 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
           </View>
         )}
       </View>
-      <TouchableOpacity
-        style={{
-          width: 30,
-          height: 30,
-          backgroundColor: '#ffffffcd',
-          borderRadius: 20,
-          elevation: 5,
-          position: 'absolute',
-          top: 10,
-          right: 5,
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-        onPress={() => {
-          onAddWishlist(item);
-        }}
-      >
-        {isInWishlist ? (
+
+      {isInWishlist ? (
+        <TouchableOpacity
+          style={{
+            width: 30,
+            height: 30,
+            backgroundColor: '#ffffffcd',
+            borderRadius: 20,
+            elevation: 5,
+            position: 'absolute',
+            top: 10,
+            right: 5,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => {
+          onRemoveItem();
+          }}
+        >
           <Image
             source={require('../assets/heartb.png')}
             style={{
@@ -121,7 +123,25 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
               height: 20,
             }}
           />
-        ) : (
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity
+          style={{
+            width: 30,
+            height: 30,
+            backgroundColor: '#ffffffcd',
+            borderRadius: 20,
+            elevation: 5,
+            position: 'absolute',
+            top: 10,
+            right: 5,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+          onPress={() => {
+            onAddWishlist(item);
+          }}
+        >
           <Image
             source={require('../assets/heart.png')}
             style={{
@@ -129,8 +149,8 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
               height: 20,
             }}
           />
-        )}
-      </TouchableOpacity>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

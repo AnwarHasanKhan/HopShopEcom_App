@@ -27,7 +27,7 @@ const Wishlist = () => {
             <WishlistItem
               item={item}
               onRemoveItem={() => {
-                dispatch(removeFromWishlist(index));
+                dispatch(removeFromWishlist(item));
               }}
             />
           );

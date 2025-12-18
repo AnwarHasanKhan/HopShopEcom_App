@@ -15,7 +15,7 @@ import Header from '../common/Header';
 import { products } from '../models/Products';
 import MyProductItem from '../common/MyProductItem';
 import { useDispatch } from 'react-redux';
-import { addItemToCart, addToWishlist } from '../redux/actions/Actions';
+import { addItemToCart, addToWishlist, removeFromWishlist } from '../redux/actions/Actions';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -85,7 +85,7 @@ const Main = () => {
             }}
           ></ImageBackground>
         </View>
-        <View style={{ paddingTop: 10, paddingBottom:10}}>
+        <View style={{ paddingTop: 10, paddingBottom: 10 }}>
           <FlatList
             data={categoryList}
             horizontal
@@ -105,7 +105,7 @@ const Main = () => {
                   <Text
                     style={{
                       fontWeight: '500',
-                      color:'#ffffffff'
+                      color: '#ffffffff',
                     }}
                   >
                     {item.category}
@@ -155,6 +155,9 @@ const Main = () => {
                     onAddToCart={x => {
                       dispatch(addItemToCart(item));
                     }}
+                    onRemoveItem={() => {
+                      dispatch(removeFromWishlist(item));
+                    }}
                   />
                 );
               }}
@@ -200,6 +203,9 @@ const Main = () => {
                     }}
                     onAddToCart={x => {
                       dispatch(addItemToCart(item));
+                    }}
+                    onRemoveItem={() => {
+                      dispatch(removeFromWishlist(item));
                     }}
                   />
                 );
@@ -247,6 +253,9 @@ const Main = () => {
                     onAddToCart={x => {
                       dispatch(addItemToCart(item));
                     }}
+                    onRemoveItem={() => {
+                      dispatch(removeFromWishlist(item));
+                    }}
                   />
                 );
               }}
@@ -293,6 +302,9 @@ const Main = () => {
                     onAddToCart={x => {
                       dispatch(addItemToCart(item));
                     }}
+                    onRemoveItem={() => {
+                      dispatch(removeFromWishlist(item));
+                    }}
                   />
                 );
               }}
@@ -338,6 +350,9 @@ const Main = () => {
                     }}
                     onAddToCart={x => {
                       dispatch(addItemToCart(item));
+                    }}
+                    onRemoveItem={() => {
+                      dispatch(removeFromWishlist(item));
                     }}
                   />
                 );
@@ -393,6 +408,9 @@ const Main = () => {
                     }}
                     onAddToCart={x => {
                       dispatch(addItemToCart(x));
+                    }}
+                    onRemoveItem={() => {
+                      dispatch(removeFromWishlist(item));
                     }}
                   />
                 );

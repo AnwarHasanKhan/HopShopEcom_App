@@ -16,10 +16,7 @@ export default (state = initialState, { type, payload }) => {
         return [...state, payload];
       }
     case REMOVE_FROM_WISHLIST:
-      const deleteArray2 = state.filter((item, index) => {
-        return index !== payload;
-      });
-      return deleteArray2;
+      return state.filter(item => item.id !== payload.id);
     case CLEAR_WISHLIST:
       return [];
     default:
