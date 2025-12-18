@@ -1,7 +1,14 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
+  const wishlistData = useSelector(state => state.Reducers2) || [];
+  const isInWishlist = wishlistData.some(
+    wishlistItem => wishlistItem.id === item.id,
+  );
+  const cartData = useSelector(state => state.Reducers) || [];
+  const isInCart = cartData.some(cartItem => cartItem.id === item.id);
   const usdToInr = 89.81;
   return (
     <View style={styles.card}>
@@ -24,7 +31,7 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
           padding: 5,
         }}
       >
-        <View style={{ height: '100%', width: '65%' }}>
+        <View style={{ height: '100%', width: '50%' }}>
           <Text
             style={{
               height: '40%',
@@ -40,25 +47,54 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
               fontSize: 14,
               fontWeight: '500',
             }}
-          >₹{Math.round(usdToInr * item.price)}</Text>
-        </View>
-        <View style={{ top: 10, alignItems: 'center' }}>
-          <TouchableOpacity
-            onPress={() => {
-              onAddToCart(item);
-            }}
           >
-            <Text
-              style={{
-                fontSize: 12,
-                borderWidth: 1,
-                borderRadius: 5,
-                paddingHorizontal: 3,
-                paddingVertical: 3,
-              }}
-            >Add Item</Text>
-          </TouchableOpacity>
+            ₹{Math.round(usdToInr * item.price)}
+          </Text>
         </View>
+        {isInCart ? (
+          <View style={{ top: 10, alignItems: 'center' }}>
+            <TouchableOpacity
+              style={{ backgroundColor: '#532280ff', borderRadius: 5 }}
+              onPress={() => {
+                onAddToCart(item);
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 12,
+                  borderWidth: 1,
+                  borderRadius: 5,
+                  paddingHorizontal: 3,
+                  paddingVertical: 3,
+                  color: '#fff',
+                }}
+              >
+                ItemAdded
+              </Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View style={{ top: 10, alignItems: 'center' }}>
+            <TouchableOpacity
+              style={{ borderRadius: 5 }}
+              onPress={() => {
+                onAddToCart(item);
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: 12,
+                  borderWidth: 1,
+                  borderRadius: 5,
+                  paddingHorizontal: 3,
+                  paddingVertical: 3,
+                }}
+              >
+                Add Item
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
       <TouchableOpacity
         style={{
@@ -77,13 +113,23 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
           onAddWishlist(item);
         }}
       >
-        <Image
-          source={require('../assets/heart.png')}
-          style={{
-            width: 20,
-            height: 20,
-          }}
-        />
+        {isInWishlist ? (
+          <Image
+            source={require('../assets/heartb.png')}
+            style={{
+              width: 20,
+              height: 20,
+            }}
+          />
+        ) : (
+          <Image
+            source={require('../assets/heart.png')}
+            style={{
+              width: 20,
+              height: 20,
+            }}
+          />
+        )}
       </TouchableOpacity>
     </View>
   );

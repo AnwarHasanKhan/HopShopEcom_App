@@ -6,7 +6,7 @@ export const products = {
         {
           id: 1,
           name: 'POLO Tshirt',
-          price: 10.99,
+          price: 9.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
@@ -14,7 +14,7 @@ export const products = {
         {
           id: 2,
           name: 'Puma Tshirt',
-          price: 15.99,
+          price: 13.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg',
@@ -22,7 +22,7 @@ export const products = {
         {
           id: 3,
           name: 'Nike Tshirt',
-          price: 22.99,
+          price: 21.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/16401230/pexels-photo-16401230.jpeg',
@@ -30,7 +30,7 @@ export const products = {
         {
           id: 4,
           name: 'Adidas Tshirt',
-          price: 20.99,
+          price: 19.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/11819703/pexels-photo-11819703.jpeg',
@@ -43,7 +43,7 @@ export const products = {
         {
           id: 5,
           name: 'Wrangler jeans',
-          price: 24.99,
+          price: 24.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
@@ -51,7 +51,7 @@ export const products = {
         {
           id: 6,
           name: 'Levi jeans',
-          price: 40.99,
+          price: 39.50,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/7437963/pexels-photo-7437963.jpeg',
@@ -59,7 +59,7 @@ export const products = {
         {
           id: 7,
           name: 'Levi Washed',
-          price: 44.99,
+          price: 44.53,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg',
@@ -67,7 +67,7 @@ export const products = {
         {
           id: 8,
           name: 'Levi Strauss jeans',
-          price: 52.99,
+          price: 51.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/4210866/pexels-photo-4210866.jpeg',
@@ -80,7 +80,7 @@ export const products = {
         {
           id: 9,
           name: 'Nike',
-          price: 79.99,
+          price: 80.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
@@ -88,7 +88,7 @@ export const products = {
         {
           id: 10,
           name: 'Puma',
-          price: 59.99,
+          price: 59.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/9666620/pexels-photo-9666620.jpeg',
@@ -96,7 +96,7 @@ export const products = {
         {
           id: 11,
           name: 'Adidas',
-          price: 79.99,
+          price: 79.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/14174472/pexels-photo-14174472.jpeg',
@@ -125,7 +125,7 @@ export const products = {
         {
           id: 14,
           name: 'Suede Jacket',
-          price: 109.99,
+          price: 109.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/7869752/pexels-photo-7869752.jpeg',
@@ -133,7 +133,7 @@ export const products = {
         {
           id: 15,
           name: 'Leather Jacket',
-          price: 129.99,
+          price: 129.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg',
@@ -141,7 +141,7 @@ export const products = {
         {
           id: 16,
           name: 'Jacket',
-          price: 49.99,
+          price: 49.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/11000106/pexels-photo-11000106.jpeg',
@@ -154,7 +154,7 @@ export const products = {
         {
           id: 17,
           name: 'Redtape',
-          price: 9.99,
+          price: 8.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/1756086/pexels-photo-1756086.jpeg',
@@ -162,7 +162,7 @@ export const products = {
         {
           id: 18,
           name: 'Crocs',
-          price: 49.99,
+          price: 48.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/18186215/pexels-photo-18186215.jpeg',
@@ -170,7 +170,7 @@ export const products = {
         {
           id: 19,
           name: 'Jack & Jones',
-          price: 14.99,
+          price: 14.49,
           gender: 'male',
           image:
             'https://images-na.ssl-images-amazon.com/images/I/81ZM6fmHmVL._UL1500_.jpg',
@@ -178,7 +178,7 @@ export const products = {
         {
           id: 20,
           name: 'Adidas',
-          price: 39.99,
+          price: 33.40,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/13912070/pexels-photo-13912070.jpeg',

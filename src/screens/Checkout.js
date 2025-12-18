@@ -227,7 +227,7 @@ const Checkout = () => {
         >
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Total</Text>
           <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
-            ₹{Math.round(getGrandTotal())}
+            ₹{cartData.length === 0 ? 0 : Math.round(getGrandTotal())}
           </Text>
         </View>
         <View style={{ marginBottom: 25 }}>
