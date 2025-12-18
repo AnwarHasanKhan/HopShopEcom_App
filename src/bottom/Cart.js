@@ -67,8 +67,8 @@ const Cart = () => {
           <View
             style={{
               borderTopWidth: 0.5,
-              padding: 10,
-              backgroundColor:'#ffffffff'
+              padding: 2,
+              backgroundColor:'#a1a1a1ff'
             }}
           >
           </View>
