@@ -56,9 +56,7 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist }) => {
                 paddingHorizontal: 3,
                 paddingVertical: 3,
               }}
-            >
-              Add Item
-            </Text>
+            >Add Item</Text>
           </TouchableOpacity>
         </View>
       </View>

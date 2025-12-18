@@ -2000,6 +2000,13 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
+"@react-native-firebase/app@^23.7.0":
+  version "23.7.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-23.7.0.tgz#48faec190c8e70d684953a5bd28286b6e8e4729d"
+  integrity sha512-sYVDkDxlOyQaDO/A0yVqbTha32dVapHlzS054RPY+RM5m0vARMsevJ9d543kH+Cdbp1RKMHIgDjhlB+APaNdhw==
+  dependencies:
+    firebase "12.6.0"
+
 "@react-native-firebase/auth@^23.7.0":
   version "23.7.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/auth/-/auth-23.7.0.tgz#4c5084d1e6311a77df1f979634281dd591be428e"
@@ -3988,7 +3995,7 @@ find-up@^5.0.0:
     locate-path "^6.0.0"
     path-exists "^4.0.0"
 
-firebase@^12.6.0:
+firebase@12.6.0, firebase@^12.6.0:
   version "12.6.0"
   resolved "https://registry.yarnpkg.com/firebase/-/firebase-12.6.0.tgz#a14cb4bc349246b12fb14f8daf093194177d063e"
   integrity sha512-8ZD1Gcv916Qp8/nsFH2+QMIrfX/76ti6cJwxQUENLXXnKlOX/IJZaU2Y3bdYf5r1mbownrQKfnWtrt+MVgdwLA==

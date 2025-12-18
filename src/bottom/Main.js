@@ -85,7 +85,7 @@ const Main = () => {
             }}
           ></ImageBackground>
         </View>
-        <View style={{ paddingTop: 15, paddingBottom:15}}>
+        <View style={{ paddingTop: 10, paddingBottom:10}}>
           <FlatList
             data={categoryList}
             horizontal
@@ -94,17 +94,18 @@ const Main = () => {
               return (
                 <TouchableOpacity
                   style={{
-                    paddingVertical: 5,
-                    paddingHorizontal: 11,
+                    paddingVertical: 8,
+                    paddingHorizontal: 16,
                     borderWidth: 0.5,
                     marginLeft: 10,
-                    backgroundColor: '#dededeff',
+                    backgroundColor: '#000000ff',
                     borderRadius: 20,
                   }}
                 >
                   <Text
                     style={{
                       fontWeight: '500',
+                      color:'#ffffffff'
                     }}
                   >
                     {item.category}
@@ -118,7 +119,7 @@ const Main = () => {
           style={styles.categoryheader}
           onPress={() => setTshirtOpen(!tshirtopen)}
         >
-          <Text style={styles.txtheader}> New Tshirts</Text>
+          <Text style={styles.txtheader}>Tshirts Collection</Text>
           {tshirtopen ? (
             <Image
               source={require('../assets/down.png')}
@@ -164,7 +165,7 @@ const Main = () => {
           style={styles.categoryheader}
           onPress={() => setJeansOpen(!jeansOpen)}
         >
-          <Text style={styles.txtheader}> Jeans Collection</Text>
+          <Text style={styles.txtheader}>Jeans Collection</Text>
           {jeansOpen ? (
             <Image
               source={require('../assets/down.png')}
@@ -210,7 +211,7 @@ const Main = () => {
           style={styles.categoryheader}
           onPress={() => setShoesOpen(!shoesOpen)}
         >
-          <Text style={styles.txtheader}> Shoes Collection</Text>
+          <Text style={styles.txtheader}>Shoes Collection</Text>
           {shoesOpen ? (
             <Image
               source={require('../assets/down.png')}
@@ -256,7 +257,7 @@ const Main = () => {
           style={styles.categoryheader}
           onPress={() => setJacketOpen(!jacketOpen)}
         >
-          <Text style={styles.txtheader}> Jackets Collection</Text>
+          <Text style={styles.txtheader}>Jackets Collection</Text>
           {jacketOpen ? (
             <Image
               source={require('../assets/down.png')}
