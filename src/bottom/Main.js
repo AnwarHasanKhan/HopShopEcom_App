@@ -16,6 +16,7 @@ import { products } from '../models/Products';
 import MyProductItem from '../common/MyProductItem';
 import { useDispatch } from 'react-redux';
 import { addItemToCart, addToWishlist, removeFromWishlist } from '../redux/actions/Actions';
+import Carousel from '../common/Carousel';
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -67,12 +68,8 @@ const Main = () => {
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView>
         <Header />
-        <View
-          style={{
-            padding: 5,
-          }}
-        >
-          <ImageBackground
+        <View>
+          {/* <ImageBackground
             source={require('../assets/6560450.png')}
             style={{
               width: '100%',
@@ -83,7 +80,8 @@ const Main = () => {
               borderRadius: 10,
               overflow: 'hidden',
             }}
-          ></ImageBackground>
+          ></ImageBackground> */}
+          <Carousel />
         </View>
         <View style={{ paddingTop: 10, paddingBottom: 10 }}>
           <FlatList

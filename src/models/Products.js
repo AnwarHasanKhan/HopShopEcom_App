@@ -117,7 +117,7 @@ export const products = {
         {
           id: 13,
           name: 'Denim Jacket',
-          price: 49.99,
+          price: 44.99,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/2229712/pexels-photo-2229712.jpeg',
@@ -125,7 +125,7 @@ export const products = {
         {
           id: 14,
           name: 'Suede Jacket',
-          price: 109.49,
+          price: 88.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/7869752/pexels-photo-7869752.jpeg',
@@ -133,7 +133,7 @@ export const products = {
         {
           id: 15,
           name: 'Leather Jacket',
-          price: 129.49,
+          price: 98.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/1124468/pexels-photo-1124468.jpeg',
@@ -141,7 +141,7 @@ export const products = {
         {
           id: 16,
           name: 'Jacket',
-          price: 49.49,
+          price: 44.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/11000106/pexels-photo-11000106.jpeg',
@@ -162,7 +162,7 @@ export const products = {
         {
           id: 18,
           name: 'Crocs',
-          price: 48.49,
+          price: 42.49,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/18186215/pexels-photo-18186215.jpeg',
@@ -178,7 +178,7 @@ export const products = {
         {
           id: 20,
           name: 'Adidas',
-          price: 33.40,
+          price: 28.40,
           gender: 'male',
           image:
             'https://images.pexels.com/photos/13912070/pexels-photo-13912070.jpeg',
@@ -191,7 +191,7 @@ export const products = {
         {
           id: 21,
           name: 'Van Heusen',
-          price: 39.99,
+          price: 34.49,
           gender: 'male',
           image:
             'https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/12554994/2021/1/7/ad242c3d-b010-41f5-af29-84690d1c681d1610020006428-HERENOW-Men-Trousers-2201610020003872-1.jpg',
@@ -199,14 +199,14 @@ export const products = {
         {
           id: 22,
           name: 'Allen Solly',
-          price: 29.99,
+          price: 25.49,
           gender: 'male',
           image: 'https://cdn.pomelofashion.com/img/p/3/9/0/2/2/6/390226.jpg',
         },
         {
           id: 23,
           name: 'Peter England',
-          price: 24.99,
+          price: 24.49,
           gender: 'male',
           image:
             'https://cdna.lystit.com/photos/macys/1417105-Blue-6c1838f7-.jpeg',
@@ -214,7 +214,7 @@ export const products = {
         {
           id: 24,
           name: 'US POLO Assasin',
-          price: 34.99,
+          price: 22.39,
           gender: 'male',
           image:
             'https://cdnc.lystit.com/photos/5faa-2014/12/02/tommy-hilfiger-red-mercer-custom-fit-chino-pants-product-1-22210402-0-316010845-normal.jpeg',

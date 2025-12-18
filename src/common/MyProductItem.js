@@ -70,7 +70,7 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem, }) => {
                   color: '#fff',
                 }}
               >
-                ItemAdded
+                ItemInCart
               </Text>
             </TouchableOpacity>
           </View>
@@ -91,7 +91,7 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem, }) => {
                   paddingVertical: 3,
                 }}
               >
-                Add Item
+                AddToCart
               </Text>
             </TouchableOpacity>
           </View>
