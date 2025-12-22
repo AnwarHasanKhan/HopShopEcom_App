@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { removeFromWishlist } from '../redux/actions/Actions';
 
-const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem, }) => {
+const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem }) => {
   const wishlistData = useSelector(state => state.Reducers2) || [];
   const isInWishlist = wishlistData.some(
     wishlistItem => wishlistItem.id === item.id,
@@ -55,43 +55,71 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem, }) => {
         {isInCart ? (
           <View style={{ top: 10, alignItems: 'center' }}>
             <TouchableOpacity
-              style={{ backgroundColor: '#532280ff', borderRadius: 5 }}
+              style={{
+                borderWidth: 1,
+                borderRadius: 8,
+                paddingHorizontal: 6,
+                paddingVertical: 3,
+                flexDirection:'row',
+                justifyContent:'center',
+                alignItems:'center',
+                backgroundColor:'#532280ff',
+                gap:5
+              }}
               onPress={() => {
                 onAddToCart(item);
               }}
             >
+              <Image
+                source={require('../assets/check.png')}
+                style={{
+                  width: 15,
+                  height: 15,
+                  alignSelf: 'center',
+                  tintColor:'#fff'
+                }}
+              />
               <Text
                 style={{
-                  fontSize: 12,
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  paddingHorizontal: 3,
-                  paddingVertical: 3,
-                  color: '#fff',
+                  fontSize: 13,
+                  color:'#fff'
                 }}
               >
-                ItemInCart
+                Added
               </Text>
             </TouchableOpacity>
           </View>
         ) : (
           <View style={{ top: 10, alignItems: 'center' }}>
             <TouchableOpacity
-              style={{ borderRadius: 5 }}
+              style={{
+                borderWidth: 1,
+                borderRadius: 8,
+                paddingHorizontal: 6,
+                paddingVertical: 3,
+                flexDirection:'row',
+                justifyContent:'center',
+                alignItems:'center',
+                gap:5
+              }}
               onPress={() => {
                 onAddToCart(item);
               }}
             >
+              <Image
+                source={require('../assets/bag.png')}
+                style={{
+                  width: 15,
+                  height: 15,
+                  alignSelf: 'center',
+                }}
+              />
               <Text
                 style={{
-                  fontSize: 12,
-                  borderWidth: 1,
-                  borderRadius: 5,
-                  paddingHorizontal: 3,
-                  paddingVertical: 3,
+                  fontSize: 13,
                 }}
               >
-                AddToCart
+                Add
               </Text>
             </TouchableOpacity>
           </View>
@@ -113,7 +141,7 @@ const MyProductItem = ({ item, onAddToCart, onAddWishlist, onRemoveItem, }) => {
             alignItems: 'center',
           }}
           onPress={() => {
-          onRemoveItem();
+            onRemoveItem();
           }}
         >
           <Image

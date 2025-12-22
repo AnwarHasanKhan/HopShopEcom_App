@@ -69,21 +69,9 @@ const Main = () => {
       <ScrollView>
         <Header />
         <View>
-          {/* <ImageBackground
-            source={require('../assets/6560450.png')}
-            style={{
-              width: '100%',
-              height: 150,
-              borderRadius: 10,
-              justifyContent: 'center',
-              alignItems: 'center',
-              borderRadius: 10,
-              overflow: 'hidden',
-            }}
-          ></ImageBackground> */}
           <Carousel />
         </View>
-        <View style={{ paddingTop: 10, paddingBottom: 10 }}>
+        <View style={{ paddingTop: 10, paddingBottom: 5 }}>
           <FlatList
             data={categoryList}
             horizontal
@@ -92,18 +80,18 @@ const Main = () => {
               return (
                 <TouchableOpacity
                   style={{
-                    paddingVertical: 8,
-                    paddingHorizontal: 16,
-                    borderWidth: 0.5,
+                    paddingVertical: 6,
+                    paddingHorizontal: 15,
+                    borderWidth: 1,
                     marginLeft: 10,
-                    backgroundColor: '#000000ff',
+                    backgroundColor: '#e4e4e4ff',
                     borderRadius: 20,
                   }}
                 >
                   <Text
                     style={{
                       fontWeight: '500',
-                      color: '#ffffffff',
+                      color: '#000000ff',
                     }}
                   >
                     {item.category}

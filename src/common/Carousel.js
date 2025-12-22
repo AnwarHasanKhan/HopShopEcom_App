@@ -63,20 +63,24 @@ const Carousel = () => {
         flexDirection: 'row',
         justifyContent: 'center',
         position: 'absolute',
-        bottom: 10,
+        bottom: 6,
         gap: 8,
         alignSelf: 'center',
+        backgroundColor:'#ffffffff',
+        padding:4,
+        borderRadius:10
       }}
     >
       {carouselData.map((_, index) => (
         <View
           key={index}
           style={{
-            height: 8,
-            width: 8,
-            borderRadius: 4,
-            marginHorizontal: 5,
-            backgroundColor: currentIndex === index ? '#ffffffff' : '#000000ff',
+            height: currentIndex === index ? 8 : 6,
+            width: currentIndex === index ? 8 : 6,
+            borderRadius: currentIndex === index ? 4 : 3,
+            marginHorizontal: 6,
+            alignSelf:'center',
+            backgroundColor: currentIndex === index ? '#3e3e3eff' : '#898989ff', 
           }}
         />
       ))}
