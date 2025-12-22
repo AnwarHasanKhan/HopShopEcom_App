@@ -54,25 +54,6 @@ const Login = ({ navigation }) => {
 
       const user = userCredential.user;
 
-      //     const docRef = doc(db, 'users', user.uid);
-      //     const docSnap = await getDoc(docRef);
-
-      //     if (docSnap.exists()) {
-      //       const profile = docSnap.data();
-
-      //       await AsyncStorage.setItem('loggedInUser', JSON.stringify(profile));
-
-      //       Alert.alert('Login Successful!');
-
-      //       navigation.navigate('Home');
-      //     } else {
-      //       Alert.alert('Profile not found in Firestore!');
-      //     }
-      //   } catch (error) {
-      //     Alert.alert('Error', error.message);
-      //   }
-      // };
-
       // 1️⃣ Create Firestore document if not exists
       const userDocRef = doc(db, 'users', user.uid);
       const userDocSnap = await getDoc(userDocRef);
