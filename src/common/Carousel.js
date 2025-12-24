@@ -64,10 +64,11 @@ const Carousel = () => {
         justifyContent: 'center',
         position: 'absolute',
         bottom: 6,
-        gap: 8,
+        gap: 5,
         alignSelf: 'center',
         backgroundColor:'#ffffffff',
-        padding:4,
+        paddingVertical:4,
+        paddingHorizontal:8,
         borderRadius:10
       }}
     >

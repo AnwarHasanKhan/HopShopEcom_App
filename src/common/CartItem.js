@@ -1,7 +1,18 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Pressable,
+} from 'react-native';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { REMOVE_FROM_CART } from '../redux/ActionTypes';
+import { addItemToCart, removeFromCart } from '../redux/actions/Actions';
 
 const CartItem = ({ item, onRemoveItem }) => {
+  const dispatch = useDispatch();
   const usdToInr = 89.81;
   return (
     <View style={styles.card}>
@@ -41,7 +52,7 @@ const CartItem = ({ item, onRemoveItem }) => {
             style={{
               backgroundColor: '#e7e7e7cd',
               borderRadius: 10,
-              padding:5,
+              padding: 5,
               fontSize: 12,
               fontWeight: '600',
             }}
@@ -50,7 +61,7 @@ const CartItem = ({ item, onRemoveItem }) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View
+      {/* <View
         style={{
           width: '20%',
           paddingVertical: 10,
@@ -72,6 +83,30 @@ const CartItem = ({ item, onRemoveItem }) => {
         >
           <Text style={{ fontSize: 12, fontWeight: '600' }}>Remove</Text>
         </TouchableOpacity>
+      </View> */}
+      <View
+        style={{
+          width: '15%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          backgroundColor: '#f3f3f3ff',
+          paddingHorizontal: 10,
+          borderRadius: 20,
+          top: 10,
+          right: 10,
+          position: 'absolute',
+        }}
+      >
+        <Pressable
+          onPress={() => {
+            dispatch(addItemToCart(item));
+          }}
+        >
+          <Text style={{ fontSize: 18, fontWeight: '600' }}>+</Text>
+        </Pressable>
+        <Pressable onPress={() => dispatch(removeFromCart(item))}>
+          <Text style={{ fontSize: 20, fontWeight: '600' }}>-</Text>
+        </Pressable>
       </View>
     </View>
   );

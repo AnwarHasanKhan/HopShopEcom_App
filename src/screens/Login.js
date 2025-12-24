@@ -116,7 +116,7 @@ const Login = ({ navigation }) => {
           color: '#000',
         }}
       >
-        Login
+        HOPSHOP!
       </Text>
 
       <CustomTextInput

@@ -62,12 +62,13 @@ const Cart = () => {
             alignSelf: 'center',
             width: '100%',
             backgroundColor: '#fff',
+            paddingBottom: 50,
           }}
         >
           <View
             style={{
               borderTopWidth: 0.5,
-              padding: 2,
+              padding: 1.5,
               backgroundColor:'#a1a1a1ff'
             }}
           >
@@ -156,11 +157,10 @@ const Cart = () => {
             style={{
               width: '100%',
               alignItems: 'center',
-              paddingBottom:50
             }}
           >
             <CommonButton
-              title={'Checkout'}
+              title={'Select Delivery Address'}
               bgcolor={'#8e6bf0ff'}
               textcolor={'#fff'}
               size={18}
