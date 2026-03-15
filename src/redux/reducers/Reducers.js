@@ -10,14 +10,10 @@ export default (state = initialState, { type, payload }) => {
       );
 
       if (existingProductIndex >= 0) {
-        // Product exists, increase quantity
         return state.map((item, index) =>
-          index === existingProductIndex
-            ? { ...item, quantity: item.quantity + 1 }
-            : item,
+          index === existingProductIndex? { ...item, quantity: item.quantity + 1 }: item,
         );
       } else {
-        // Product does not exist, add with quantity 1
         return [...state, { ...payload, quantity: 1 }];
       }
     }
@@ -31,14 +27,10 @@ export default (state = initialState, { type, payload }) => {
         const item = state[existingProductIndex];
 
         if (item.quantity > 1) {
-          // Decrease quantity by 1
           return state.map((itm, index) =>
-            index === existingProductIndex
-              ? { ...itm, quantity: itm.quantity - 1 }
-              : itm,
+            index === existingProductIndex? { ...itm, quantity: itm.quantity - 1 }: itm,
           );
         } else {
-          // Remove item completely if quantity is 1
           return state.filter((_, index) => index !== existingProductIndex);
         }
       }

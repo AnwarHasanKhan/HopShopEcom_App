@@ -10,6 +10,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',]
         },
         {
           id: 2,
@@ -18,6 +23,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',]
         },
         {
           id: 3,
@@ -26,6 +36,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/16401230/pexels-photo-16401230.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',]
         },
         {
           id: 4,
@@ -34,6 +49,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/11819703/pexels-photo-11819703.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',
+            'https://images.pexels.com/photos/4066288/pexels-photo-4066288.jpeg',]
         },
       ],
     },
@@ -47,6 +67,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',]
         },
         {
           id: 6,
@@ -55,6 +80,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/7437963/pexels-photo-7437963.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',]
         },
         {
           id: 7,
@@ -63,6 +93,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',]
         },
         {
           id: 8,
@@ -71,6 +106,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/4210866/pexels-photo-4210866.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',
+            'https://images.pexels.com/photos/18136807/pexels-photo-18136807.jpeg',]
         },
       ],
     },
@@ -84,6 +124,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',]
         },
         {
           id: 10,
@@ -92,6 +137,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/9666620/pexels-photo-9666620.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',]
         },
         {
           id: 11,
@@ -100,6 +150,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/14174472/pexels-photo-14174472.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',]
         },
         {
           id: 12,
@@ -108,6 +163,11 @@ export const products = {
           gender: 'male',
           image:
             'https://images.pexels.com/photos/6748252/pexels-photo-6748252.jpeg',
+          extraimage:[
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',
+            'https://images.pexels.com/photos/7445819/pexels-photo-7445819.jpeg',]
         },
       ],
     },

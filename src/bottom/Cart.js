@@ -84,7 +84,7 @@ const Cart = () => {
               paddingRight: 20,
             }}
           >
-            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>SubTotal</Text>
+            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>SubTotal:</Text>
             <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
               ₹{getTotal()}
             </Text>
@@ -101,7 +101,7 @@ const Cart = () => {
             }}
           >
             <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
-              Platform Fee
+              Platform Fee:
             </Text>
             <Text
               style={{
@@ -125,7 +125,7 @@ const Cart = () => {
             }}
           >
             <Text style={{ fontSize: 16, fontWeight: 'bold' }}>
-              Delivery Charge
+              Delivery Charge:
             </Text>
             <Text
               style={{
@@ -148,7 +148,7 @@ const Cart = () => {
               paddingRight: 20,
             }}
           >
-            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Total</Text>
+            <Text style={{ fontSize: 18, fontWeight: 'bold' }}>Total Amount:</Text>
             <Text style={{ fontSize: 18, fontWeight: 'bold' }}>
               ₹{getGrandTotal()}
             </Text>

@@ -89,11 +89,34 @@ const Search = () => {
                   }}
                 >
                   <Pressable
+                    style={{
+                      borderRadius: 8,
+                      paddingHorizontal: 6,
+                      paddingVertical: 3,
+                      flexDirection: 'row',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      gap: 5,
+                    }}
                     onPress={() => {
                       dispatch(addItemToCart(item));
                     }}
                   >
-                    <Text style={{ fontSize: 12, fontWeight:'bold' }}>AddToCart</Text>
+                    <Image
+                      source={require('../assets/bag.png')}
+                      style={{
+                        width: 15,
+                        height: 15,
+                        alignSelf: 'center',
+                      }}
+                    />
+                    <Text
+                      style={{
+                        fontSize: 13,
+                      }}
+                    >
+                      Add
+                    </Text>
                   </Pressable>
                 </View>
               </View>

@@ -33,6 +33,7 @@ const Login = ({ navigation }) => {
   const submit = async () => {
     if (!email || !email.includes('@') || !email.includes('.com')) {
       setBadEmail(true);
+      setBadPassword(true);
       return;
     } else setBadEmail(false);
 
@@ -54,7 +55,7 @@ const Login = ({ navigation }) => {
 
       const user = userCredential.user;
 
-      // 1️⃣ Create Firestore document if not exists
+      //Create Firestore document if not exists
       const userDocRef = doc(db, 'users', user.uid);
       const userDocSnap = await getDoc(userDocRef);
 
@@ -68,19 +69,19 @@ const Login = ({ navigation }) => {
       const profile = { uid: user.uid, email: user.email };
       await AsyncStorage.setItem('loggedInUser', JSON.stringify(profile));
 
-      // 2️⃣ Load cart
+      //Load cart
       const cartSnap = await getDocs(collection(db, 'users', user.uid, 'cart'));
       const cartItems = cartSnap.docs.map(doc => doc.data());
       dispatch({ type: 'SET_CART', payload: cartItems });
 
-      // 3️⃣ Load wishlist
+      //Load wishlist
       const wishlistSnap = await getDocs(
         collection(db, 'users', user.uid, 'wishlist'),
       );
       const wishlistItems = wishlistSnap.docs.map(doc => doc.data());
       dispatch({ type: 'SET_WISHLIST', payload: wishlistItems });
 
-      // 4️⃣ Load addresses
+      //Load addresses
       const addressesSnap = await getDocs(
         collection(db, 'users', user.uid, 'addresses'),
       );
@@ -88,7 +89,7 @@ const Login = ({ navigation }) => {
       dispatch({ type: 'SET_ADDRESS', payload: addresses });
 
       Alert.alert('Login Successful!');
-      navigation.navigate('Home');
+      navigation.replace('Home');
     } catch (error) {
       Alert.alert('Error', error.message);
     }
