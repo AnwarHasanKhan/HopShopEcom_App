@@ -22,7 +22,7 @@ const CustomTextInput = ({
         secureTextEntry={secureTextEntry}
         value={value}
         onChangeText={onChangeText}
-        style={{ flex: 1 }}
+        style={{ flex: 1,color:'#000' }}
       />
 
       {rightIcon && (

@@ -1,4 +1,12 @@
-import { View, Text, Image, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Alert,
+  StatusBar,
+  KeyboardAvoidingView,
+  Platform,
+} from 'react-native';
 import React, { useState } from 'react';
 import CustomTextInput from '../common/CustomTextInput';
 import CommonButton from '../common/CommonButton';
@@ -17,9 +25,11 @@ import { initializeApp } from 'firebase/app';
 import firebaseConfig from '../services/firebaseConfig';
 import { useDispatch } from 'react-redux';
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+import { auth, db } from '../services/firebaseAuth';
+import { SafeAreaView } from 'react-native-safe-area-context';
+// const app = initializeApp(firebaseConfig);
+// const auth = getAuth(app);
+// const db = getFirestore(app);
 
 const Login = ({ navigation }) => {
   const [email, setemail] = useState('');
@@ -50,7 +60,7 @@ const Login = ({ navigation }) => {
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
 
       const user = userCredential.user;
@@ -67,6 +77,7 @@ const Login = ({ navigation }) => {
       }
 
       const profile = { uid: user.uid, email: user.email };
+      console.log('Console from login:', profile);
       await AsyncStorage.setItem('loggedInUser', JSON.stringify(profile));
 
       //Load cart
@@ -88,7 +99,6 @@ const Login = ({ navigation }) => {
       const addresses = addressesSnap.docs.map(doc => doc.data());
       dispatch({ type: 'SET_ADDRESS', payload: addresses });
 
-      Alert.alert('Login Successful!');
       navigation.replace('Home');
     } catch (error) {
       Alert.alert('Error', error.message);
@@ -96,113 +106,126 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
-      <Image
-        source={require('../assets/playstore.png')}
-        style={{
-          width: 90,
-          height: 90,
-          alignSelf: 'center',
-          marginTop: 200,
-          borderRadius: 10,
-        }}
+    <>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={'#F7F7F7'}
+        hidden={false} // Ensure it's not hidden
+        translucent={false} // Avoid translucency
       />
-
-      <Text
-        style={{
-          alignSelf: 'center',
-          fontSize: 25,
-          fontWeight: '600',
-          marginTop: 20,
-          color: '#000',
-        }}
-      >
-        HOPSHOP!
-      </Text>
-
-      <CustomTextInput
-        placeholder={'Enter Email...'}
-        value={email}
-        onChangeText={actualData => setemail(actualData)}
-        icon={require('../assets/mail.png')}
-      />
-
-      {badEmail === true && (
-        <Text
-          style={{
-            marginTop: 5,
-            marginLeft: 35,
-            color: 'red',
-            fontSize: 12,
-          }}
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
+        <KeyboardAvoidingView
+          behavior="padding"
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 100 : 0}
+          style={{ flex: 1, justifyContent: 'center' }}
         >
-          Please Enter Email ID
-        </Text>
-      )}
+          <Image
+            source={require('../assets/playstore.png')}
+            style={{
+              width: 90,
+              height: 90,
+              alignSelf: 'center',
+              borderRadius: 10,
+            }}
+          />
 
-      <CustomTextInput
-        placeholder={'Enter Password...'}
-        value={password}
-        onChangeText={setPassword}
-        icon={require('../assets/padlock.png')}
-        secureTextEntry={!showPassword}
-        rightIcon={
-          !showPassword
-            ? require('../assets/eye-off.png')
-            : require('../assets/eye.png')
-        }
-        onRightIconPress={() => setShowPassword(!showPassword)}
-      />
+          <Text
+            style={{
+              alignSelf: 'center',
+              fontSize: 25,
+              fontWeight: '600',
+              marginTop: 20,
+              color: '#000',
+            }}
+          >
+            HOPSHOP!
+          </Text>
 
-      {badPassword === true && (
-        <Text
-          style={{
-            marginTop: 5,
-            marginLeft: 35,
-            color: 'red',
-            fontSize: 12,
-          }}
-        >
-          Please Enter Password!
-        </Text>
-      )}
+          <CustomTextInput
+            placeholder={'Enter Email...'}
+            value={email}
+            onChangeText={actualData => setemail(actualData)}
+            icon={require('../assets/mail.png')}
+          />
 
-      <Text
-        style={{
-          fontSize: 14,
-          fontWeight: '600',
-          alignSelf: 'flex-end',
-          marginTop: 10,
-          marginRight: 30,
-          textDecorationLine: 'underline',
-        }}
-        onPress={() => navigation.navigate('Forget')}
-      >
-        Forgot Password?
-      </Text>
+          {badEmail === true && (
+            <Text
+              style={{
+                marginTop: 5,
+                marginLeft: 35,
+                color: 'red',
+                fontSize: 12,
+              }}
+            >
+              Please Enter Email ID
+            </Text>
+          )}
 
-      <CommonButton
-        title={'Login'}
-        bgcolor={'#000'}
-        textcolor={'#fff'}
-        size={20}
-        thick={'600'}
-        onPress={submit}
-      />
+          <CustomTextInput
+            placeholder={'Enter Password...'}
+            value={password}
+            onChangeText={setPassword}
+            icon={require('../assets/padlock.png')}
+            secureTextEntry={!showPassword}
+            rightIcon={
+              !showPassword
+                ? require('../assets/eye-off.png')
+                : require('../assets/eye.png')
+            }
+            onRightIconPress={() => setShowPassword(!showPassword)}
+          />
 
-      <Text
-        style={{
-          fontSize: 20,
-          fontWeight: '600',
-          alignSelf: 'center',
-          marginTop: 20,
-          textDecorationLine: 'underline',
-        }}
-        onPress={() => navigation.navigate('SignUp')}
-      >
-        Create New Account?
-      </Text>
-    </View>
+          {badPassword === true && (
+            <Text
+              style={{
+                marginTop: 5,
+                marginLeft: 35,
+                color: 'red',
+                fontSize: 12,
+              }}
+            >
+              Please Enter Password!
+            </Text>
+          )}
+
+          <Text
+            style={{
+              fontSize: 14,
+              fontWeight: '600',
+              alignSelf: 'flex-end',
+              marginTop: 10,
+              marginRight: 30,
+              textDecorationLine: 'underline',
+            }}
+            onPress={() => navigation.navigate('Forget')}
+          >
+            Forgot Password?
+          </Text>
+
+          <CommonButton
+            title={'Login'}
+            bgcolor={'#000'}
+            textcolor={'#fff'}
+            size={20}
+            thick={'600'}
+            onPress={submit}
+          />
+
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: '600',
+              alignSelf: 'center',
+              marginTop: 20,
+              textDecorationLine: 'underline',
+            }}
+            onPress={() => navigation.navigate('SignUp')}
+          >
+            Create New Account?
+          </Text>
+        </KeyboardAvoidingView>
+      </SafeAreaView>
+    </>
   );
 };
 

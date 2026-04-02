@@ -56,7 +56,7 @@ const AddAddress = () => {
             alignItems: 'center',
           }}
           onPress={() => {
-            if ((city !== '' && building !== '', pincode !== '')) {
+            if ((city !== '' && building !== '' && pincode !== '')) {
               dispatch(
                 addAddress({
                   building: building,
@@ -102,7 +102,7 @@ const AddAddress = () => {
         size={18}
         thick={'700'}
         onPress={() => {
-          if ((city !== '' && building !== '', pincode !== '')) {
+          if ((city !== '' && building !== '' && pincode !== '')) {
             dispatch(
               addAddress({ building: building, city: city, pincode: pincode }),
             );

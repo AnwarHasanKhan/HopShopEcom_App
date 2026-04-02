@@ -9,7 +9,7 @@ const CommonButton = ({ onPress, title, bgcolor, textcolor, size, thick }) => {
         justifyContent: 'center',
         alignItems: 'center',
         width: '85%',
-        height: 50,
+        height: 45,
         borderRadius: 10,
         alignSelf: 'center',
         marginTop: 30,

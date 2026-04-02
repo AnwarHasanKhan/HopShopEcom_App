@@ -92,9 +92,8 @@ const Main = () => {
                     style={{
                       fontWeight: '500',
                       color: '#000000ff',
-                    }}
-                  >
-                    {item.category}
+                    }}>
+                    {item.category} 
                   </Text>
                 </TouchableOpacity>
               );

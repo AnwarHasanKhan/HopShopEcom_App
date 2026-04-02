@@ -1,4 +1,4 @@
-import { View, Text, Alert, Animated } from 'react-native';
+import { View, Text, Alert, Animated, StatusBar } from 'react-native';
 import React, { useState, useRef, useEffect } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CustomTextInput from '../common/CustomTextInput';
@@ -47,7 +47,7 @@ const Forget = ({ navigation }) => {
     try {
       await confirmation.confirm(otp);
       Alert.alert('Success', 'Phone number verified!');
-      navigation.navigate('Login');
+      navigation.replace('Login');
     } catch (error) {
       console.log('Error verifying OTP:', error);
       Alert.alert('Error', 'Invalid OTP. Please try again.');
@@ -55,54 +55,58 @@ const Forget = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        padding: 20,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Animated.View
-        style={{ opacity: fadeAnim, marginBottom: 20, alignItems: 'center' }}
-      >
-        <Text style={{ fontSize: 18, fontWeight: '600', textAlign: 'center' }}>
-          {step === 1
-            ? 'Enter your mobile number to receive OTP 🔒'
-            : 'Enter the OTP sent to your mobile number'}
-        </Text>
-      </Animated.View>
+    <>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={'#F7F7F7'}
+        hidden={false} // Ensure it's not hidden
+        translucent={false} // Avoid translucency
+      />
+      <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
 
-      <Animated.View style={{ opacity: fadeAnim, width: '100%' }}>
-        {step === 1 ? (
-          <CustomTextInput
-            placeholder={'Enter Mobile...'}
-            icon={require('../assets/mobile-phone.png')}
-            value={mobile}
-            onChangeText={setMobile}
-          />
-        ) : (
-          <CustomTextInput
-            placeholder={'Enter OTP...'}
-            icon={require('../assets/mobile-phone.png')}
-            value={otp}
-            onChangeText={setOtp}
-            keyboardType="number-pad"
-            maxLength={6}
-          />
-        )}
+        <Animated.View style={{ opacity: fadeAnim, alignItems: 'center',justifyContent: 'center' }}>
+          <Text
+            style={{ fontSize: 18, fontWeight: '600', textAlign: 'center' }}
+          >
+            {step === 1
+              ? 'Enter your mobile number to receive OTP 🔒'
+              : 'Enter the OTP sent to your mobile number'}
+          </Text>
+        </Animated.View>
 
-        <CommonButton
-          title={step === 1 ? 'Get OTP' : 'Verify OTP'}
-          bgcolor={'#000'}
-          textcolor={'#fff'}
-          size={20}
-          thick={'600'}
-          onPress={step === 1 ? sendOTP : verifyOTP}
-          style={{ marginTop: 20 }}
-        />
-      </Animated.View>
-    </SafeAreaView>
+        <Animated.View style={{ opacity: fadeAnim, width: '100%' }}>
+          {step === 1 ? (
+            <CustomTextInput
+              placeholder={'Enter Mobile...'}
+              icon={require('../assets/mobile-phone.png')}
+              value={mobile}
+              onChangeText={setMobile}
+            />
+          ) : (
+            <CustomTextInput
+              placeholder={'Enter OTP...'}
+              icon={require('../assets/mobile-phone.png')}
+              value={otp}
+              onChangeText={setOtp}
+              keyboardType="number-pad"
+              maxLength={6}
+            />
+          )}
+
+          <CommonButton
+            title={step === 1 ? 'Get OTP' : 'Verify OTP'}
+            bgcolor={'#000'}
+            textcolor={'#fff'}
+            size={20}
+            thick={'600'}
+            onPress={step === 1 ? sendOTP : verifyOTP}
+            style={{ marginTop: 20 }}
+          />
+        </Animated.View>
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 
