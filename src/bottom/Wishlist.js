@@ -12,7 +12,7 @@ const Wishlist = () => {
   const wishlistData = useSelector(state => state.Reducers2);
   const dispatch = useDispatch();
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor:'#ffffff' }}>
       <Header />
       <FlatList
         data={wishlistData}

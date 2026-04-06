@@ -15,7 +15,11 @@ import Header from '../common/Header';
 import { products } from '../models/Products';
 import MyProductItem from '../common/MyProductItem';
 import { useDispatch } from 'react-redux';
-import { addItemToCart, addToWishlist, removeFromWishlist } from '../redux/actions/Actions';
+import {
+  addItemToCart,
+  addToWishlist,
+  removeFromWishlist,
+} from '../redux/actions/Actions';
 import Carousel from '../common/Carousel';
 
 const Main = () => {
@@ -49,13 +53,20 @@ const Main = () => {
       setSlipperList(products.category[4].data);
       setTrouserList(products.category[5].data);
       setLoading(false);
-    }, 1000);
+    }, 500);
     return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: '#ffffff',
+        }}
+      >
         <ActivityIndicator size="large" color="#007AFF" />
         <Text style={{ marginTop: 10, fontSize: 16, fontWeight: '500' }}>
           Loading products...
@@ -65,8 +76,8 @@ const Main = () => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Header />
         <View>
           <Carousel />
@@ -84,16 +95,17 @@ const Main = () => {
                     paddingHorizontal: 15,
                     borderWidth: 1,
                     marginLeft: 10,
-                    backgroundColor: '#e4e4e4ff',
-                    borderRadius: 20,
+                    backgroundColor: '#f5f5f5ff',
+                    borderRadius: 10,
                   }}
                 >
                   <Text
                     style={{
                       fontWeight: '500',
                       color: '#000000ff',
-                    }}>
-                    {item.category} 
+                    }}
+                  >
+                    {item.category}
                   </Text>
                 </TouchableOpacity>
               );

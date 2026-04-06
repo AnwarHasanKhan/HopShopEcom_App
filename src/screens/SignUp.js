@@ -2,16 +2,11 @@ import { View, Text, Image, Alert, ScrollView, StatusBar, StyleSheet, Platform, 
 import React, { useState } from 'react';
 import CustomTextInput from '../common/CustomTextInput';
 import CommonButton from '../common/CommonButton';
-import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
-import firebaseConfig from '../services/firebaseConfig';
 
 import { auth, db } from '../services/firebaseAuth';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// const app = initializeApp(firebaseConfig);
-// const auth = getAuth(app);
-// const db = getFirestore(app);
 
 const SignUp = ({ navigation }) => {
   const [userName, setUserName] = useState('');
@@ -67,28 +62,6 @@ const SignUp = ({ navigation }) => {
     registerUser();
   };
 
-  // const registerUser = async () => {
-  //   try {
-  //     const userCredential = await createUserWithEmailAndPassword(
-  //       auth,
-  //       email,
-  //       password,
-  //     );
-  //     const user = userCredential.user;
-
-  //     await setDoc(doc(db, 'users', user.uid), {
-  //       name: userName,
-  //       email: email,
-  //       mobile: mobile,
-  //       createdAt: new Date(),
-  //     });
-
-  //     Alert.alert('Success', `Account Created: ${user.email}`);
-  //     navigation.goBack();
-  //   } catch (error) {
-  //     Alert.alert('Error', error.message);
-  //   }
-  // };
 
   const registerUser = async () => {
     try {
@@ -106,7 +79,6 @@ const SignUp = ({ navigation }) => {
         createdAt: new Date(),
       });
 
-      // ✅ Navigate to Login cleanly after signup
       Alert.alert(
         'Success',
         'Account created! Please login.',

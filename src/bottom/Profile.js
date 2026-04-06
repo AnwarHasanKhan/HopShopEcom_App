@@ -276,7 +276,14 @@
 // //   },
 // // });
 
-import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -321,25 +328,45 @@ const Profile = () => {
     }
   };
 
+  // const logoutUser = async () => {
+  //   try {
+  //     await signOut(auth);
+  //     await AsyncStorage.clear(); // ✅ this alone is enough
+  //     dispatch({ type: 'CLEAR_CART' });
+  //     dispatch({ type: 'CLEAR_WISHLIST' });
+  //     dispatch({ type: 'CLEAR_ADDRESS' });
+  //     dispatch({ type: 'CLEAR_ORDER' });
+  //     navigation.replace('Login');
+  //   } catch (error) {
+  //     console.log('Logout Error:', error);
+  //   }
+  // };
   const logoutUser = async () => {
-    try {
-      await signOut(auth);
-      await AsyncStorage.clear(); // ✅ this alone is enough
-      dispatch({ type: 'CLEAR_CART' });
-      dispatch({ type: 'CLEAR_WISHLIST' });
-      dispatch({ type: 'CLEAR_ADDRESS' });
-      dispatch({ type: 'CLEAR_ORDER' });
-      navigation.replace('Login');
-    } catch (error) {
-      console.log('Logout Error:', error);
-    }
+    Alert.alert('Log out', 'Are you sure?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Log out',
+        style: 'destructive',
+        onPress: async () => {
+          await signOut(auth);
+          await AsyncStorage.removeItem('loggedInUser');
+          await AsyncStorage.clear();
+          navigation.replace('Login');
+        },
+      },
+    ]);
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#ffffff' }}>
       <View style={styles.header}>
         <Text style={styles.headerText}>Profile</Text>
-        <TouchableOpacity style={styles.settingsBtn}>
+        <TouchableOpacity
+          style={styles.settingsBtn}
+          onPress={() => {
+            navigation.navigate('Settings');
+          }}
+        >
           <Image
             source={require('../assets/setting.png')}
             style={styles.settingsIcon}
@@ -385,7 +412,10 @@ const Profile = () => {
           <ListItem label="Manage Account" />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.list}>
+        <TouchableOpacity
+          style={styles.list}
+          onPress={() => navigation.navigate('Settings')}
+        >
           <ListItem label="Settings" />
         </TouchableOpacity>
       </View>
@@ -454,7 +484,7 @@ const styles = StyleSheet.create({
   logoutContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 15,
   },
   logoutBtn: {
     borderWidth: 1,

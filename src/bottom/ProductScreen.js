@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     elevation: 3,
     marginBottom: 8,
-    backgroundColor: '#e8e8e8ff',
+    backgroundColor: '#f6f6f6ff',
     padding: 10,
   },
   image: { width: 150, height: '70%', resizeMode: 'contain', marginBottom: 10 },

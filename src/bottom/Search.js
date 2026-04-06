@@ -23,7 +23,7 @@ const Search = () => {
     setResults(filtered);
   };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor:'#ffffff' }}>
       <Header />
       {query === '' || results.length == 0 ? (
         <Text style={{ marginTop: 20, textAlign: 'center', color: 'gray' }}>

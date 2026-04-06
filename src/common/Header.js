@@ -14,7 +14,6 @@ const Header = ({onPress}) => {
           borderBottomWidth: 0.2,
           borderBottomColor: '#999ad2ff',
           backgroundColor: '#fff',
-          elevation: 3,
         }}
       >
         <Text

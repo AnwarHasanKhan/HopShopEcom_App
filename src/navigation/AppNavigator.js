@@ -12,6 +12,7 @@ import Checkout from '../screens/Checkout';
 import OrderSuccess from '../OrderSuccess';
 import Orders from '../screens/Orders';
 import MyWishlist from '../screens/MyWishlist';
+import Settings from '../screens/Settings';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -71,6 +72,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="MyWishlist"
           component={MyWishlist}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

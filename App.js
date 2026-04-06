@@ -1,14 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import MainContainer from './src/navigation/MainContainer';
-import { Provider } from 'react-redux';
-import store from './src/redux/store/Store';
+import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
+import { Alert } from 'react-native';
 
 const App = () => {
-  return (
-    <Provider store={store}>
-      <MainContainer />
-    </Provider>
-  );
+  useEffect(() => {
+    enableBiometrics();
+  }, []);
+  const enableBiometrics = () => {
+    const rnBiometric = new ReactNativeBiometrics();
+    console.log('rnBio:', rnBiometric)
+    rnBiometric.isSensorAvailable().then(({ available, biometryType }) => {
+      if (available && biometryType === BiometryTypes.TouchID) {
+        Alert.alert('TouchID');
+      } 
+    });
+  };
+  return (<MainContainer />);
 };
 
 export default App;
