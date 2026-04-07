@@ -9,7 +9,7 @@ const App = () => {
   }, []);
   const enableBiometrics = () => {
     const rnBiometric = new ReactNativeBiometrics();
-    console.log('rnBio:', rnBiometric)
+    console.log('rnBio from app:', rnBiometric)
     rnBiometric.isSensorAvailable().then(({ available, biometryType }) => {
       if (available && biometryType === BiometryTypes.TouchID) {
         Alert.alert('TouchID');
