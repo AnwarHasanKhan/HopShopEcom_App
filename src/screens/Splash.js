@@ -4,11 +4,14 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useDispatch } from 'react-redux';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
+
+import { db } from '../services/firebaseAuth';
 import { useBiometrics } from '../hooks/useBiometrics';
 
 const Splash = () => {
   const navigation = useNavigation();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { loginWithBiometrics, isEnrolled } = useBiometrics();
 
   useEffect(() => {
