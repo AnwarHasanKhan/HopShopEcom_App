@@ -4,8 +4,6 @@ import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { Alert } from 'react-native';
 
 const App = () => {
-<<<<<<< HEAD
-<<<<<<< HEAD
   // useEffect(() => {
   //   enableBiometrics();
   // }, []);
@@ -21,33 +19,6 @@ const App = () => {
   //     }
   //   });
   // };
-  return (
-  <MainContainer/>
-  );
-=======
-=======
->>>>>>> parent of 6539316 (Add BackHandler)
-  useEffect(() => {
-    enableBiometrics();
-  }, []);
-  const enableBiometrics = () => {
-    const rnBiometric = new ReactNativeBiometrics();
-<<<<<<< HEAD
-    console.log('rnBio:', rnBiometric)
-=======
-    console.log('rnBio from app:', rnBiometric)
->>>>>>> parent of 6539316 (Add BackHandler)
-    rnBiometric.isSensorAvailable().then(({ available, biometryType }) => {
-      if (available && biometryType === BiometryTypes.TouchID) {
-        Alert.alert('TouchID');
-      } 
-    });
-  };
-  return (<MainContainer />);
-<<<<<<< HEAD
->>>>>>> parent of adc01e6 (Updated Depedencies)
-=======
->>>>>>> parent of 6539316 (Add BackHandler)
+  return <MainContainer />;
 };
-
 export default App;
