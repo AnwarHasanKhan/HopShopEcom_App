@@ -8,8 +8,7 @@ const OrderSuccess = () => {
   const route = useRoute();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate('Home');
-      // navigation.goBack();
+      navigation.replace('Home');
     }, 2500);
   }, []);
   return (
