@@ -274,6 +274,9 @@ const Login = ({ navigation }) => {
       if (available) {
         const enrolled = await isEnrolled();
         setBiometricEnrolled(enrolled);
+
+        // Auto-prompt biometric login if already enrolled
+        // if (enrolled) handleBiometricLogin();
       }
     })();
   }, []);
