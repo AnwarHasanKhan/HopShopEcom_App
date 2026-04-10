@@ -1,5 +1,12 @@
-import { View, TouchableOpacity, Image, StatusBar } from 'react-native';
-import React, { useState } from 'react';
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  StatusBar,
+  Alert,
+  BackHandler,
+} from 'react-native';
+import React, { useCallback, useState } from 'react';
 import Main from '../bottom/Main';
 import Search from '../bottom/Search';
 import Cart from '../bottom/Cart';
@@ -9,12 +16,30 @@ import ProductScreen from '../bottom/ProductScreen';
 import { Text } from 'react-native-gesture-handler';
 import { useSelector } from 'react-redux';
 import Checkout from './Checkout';
+import { useFocusEffect } from '@react-navigation/native';
 
 const Home = () => {
   const [selectedTab, setSelectedTab] = useState(0);
   const cartData = useSelector(state => state.Reducers);
   const WishlistData = useSelector(state => state.Reducers2);
 
+  useFocusEffect(
+    useCallback(() => {
+      const backAction = () => {
+        Alert.alert('Exit App', 'Are you sure you want to exit?', [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'YES', onPress: () => BackHandler.exitApp() },
+        ]);
+        return true;
+      };
+
+      const backHandler = BackHandler.addEventListener(
+        'hardwareBackPress',
+        backAction,
+      );
+      return () => backHandler.remove();
+    }, []),
+  );
   return (
     <>
       <StatusBar
